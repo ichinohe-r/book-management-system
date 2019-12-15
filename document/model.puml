@@ -1,0 +1,98 @@
+@startuml
+
+package api{
+    class 書籍情報登録API{
+        書籍登録サービス.apply()
+    }
+
+    class 書籍情報登録Forms{
+        著者Form
+        書籍名Form
+        国際標準図書番号Form
+        システムの書籍管理番号Form
+
+        書籍登録申込書 create()
+    }
+
+    class 書籍情報登録Request{
+        書籍情報登録Forms
+
+        書籍登録申込書 get書籍登録申込書()
+    }
+
+    class 書籍情報変更API{
+    }
+
+    class 書籍情報削除API{
+    }
+}
+
+package service{
+    class 書籍登録サービス{
+        書籍管理ポリシー 書籍登録可否check(書籍登録申込書)
+        void entry(書籍登録申込書)
+    }
+}
+
+
+package domain{
+
+    class 書籍登録申込書{
+    }
+
+    class 書籍管理ポリシー {
+        ok 未登録の書籍です
+        ng 既に登録済みの書籍です
+    }
+
+    class "<Entity>\n書籍" as 書籍{
+    }
+
+    class "<VO>\n著者" as 著者{
+    }
+
+    class "<VO>\n書籍名" as 書籍名{
+    }
+
+    class "<VO>\n国際標準図書番号" as 国際標準図書番号{
+    }
+
+    class "<VO>\nシステムの書籍管理番号" as システムの書籍管理番号{
+    }
+    note bottom
+    一意になるキー
+    国際標準図書番号を使いまわす
+    出版社が存在するため追加する
+    end note
+
+    class "<VO>\n書籍情報更新受付時間" as 書籍情報更新受付時間{
+    }
+
+    interface 書籍情報登録Repository{
+        void apply()
+    }
+}
+
+
+package datasource{
+
+    class 書籍情報登録Impl{
+        apply()
+    }
+}
+
+
+書籍 --> 著者
+書籍 --> 書籍名
+書籍 --> 国際標準図書番号
+書籍 --> システムの書籍管理番号
+書籍 --> 書籍情報更新受付時間
+
+書籍情報登録API --> 書籍登録サービス
+書籍登録サービス --> 書籍登録申込書
+
+書籍情報登録API --> 書籍情報登録Request
+書籍情報登録Request --> 書籍情報登録Forms
+書籍情報登録Impl --|> 書籍情報登録Repository
+書籍登録サービス --> 書籍管理ポリシー
+@enduml
