@@ -1,0 +1,1 @@
+INSERT INTO book_info ( isbn, book_title, author, event_date_time ) VALUES ( '123-4-56-148410-9', 'ゴッホ図録', 'ゴッホファン', sysdate );
