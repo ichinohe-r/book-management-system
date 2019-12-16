@@ -10,5 +10,5 @@ import lombok.ToString;
 @ToString(includeFieldNames = false)
 public class 著者Form {
     @Getter
-    public final String value;
+    private final String value;
 }

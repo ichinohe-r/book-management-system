@@ -1,6 +1,8 @@
 package ichinohe.application.bookmanagementsystem.api.entry;
 
-import ichinohe.application.bookmanagementsystem.api.entry.Forms.書籍情報登録Forms;
+import ichinohe.application.bookmanagementsystem.api.entry.Forms.国際標準図書番号Form;
+import ichinohe.application.bookmanagementsystem.api.entry.Forms.書籍名Form;
+import ichinohe.application.bookmanagementsystem.api.entry.Forms.著者Form;
 import ichinohe.application.bookmanagementsystem.domain.entry.受付日時;
 import ichinohe.application.bookmanagementsystem.domain.entry.国際標準図書番号;
 import ichinohe.application.bookmanagementsystem.domain.entry.書籍名;
@@ -14,13 +16,18 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString(includeFieldNames = false)
 public class 書籍情報登録Request {
-    public 書籍情報登録Forms bookInfoEntryForms;
+
+    private final 著者Form authorForm;
+
+    private final 書籍名Form bookTitleForm;
+
+    private final 国際標準図書番号Form isbnForm;
 
     public 書籍登録申込書 create(受付日時 receptionDateAndTime) {
         return new 書籍登録申込書(
-                new 国際標準図書番号(bookInfoEntryForms.getIsbnForm().getValue()),
-                new 書籍名(bookInfoEntryForms.getBookTitleForm().getValue()),
-                new 著者(bookInfoEntryForms.getAuthorForm().getValue()),
+                new 著者(authorForm.getValue()),
+                new 書籍名(bookTitleForm.getValue()),
+                new 国際標準図書番号(isbnForm.getValue()),
                 receptionDateAndTime
         );
     }

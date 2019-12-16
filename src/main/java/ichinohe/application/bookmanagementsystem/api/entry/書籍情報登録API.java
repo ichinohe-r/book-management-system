@@ -5,10 +5,9 @@ import ichinohe.application.bookmanagementsystem.domain.entry.書籍登録申込
 import ichinohe.application.bookmanagementsystem.service.entry.Book登録Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.validation.Valid;
 
 @Controller
 public class 書籍情報登録API {
@@ -19,12 +18,14 @@ public class 書籍情報登録API {
     Book登録Service service;
 
     @RequestMapping(value = URI, method = RequestMethod.GET)
-    public void apply(書籍情報登録Request request) {
+    public String apply(書籍情報登録Request request, Model model) {
 
         書籍登録申込書 application = request.create(受付日時.create());
 
         service.entry(application);
 
-//        return null;
+        model.addAttribute("message", "書籍『" + application.getBookTitle().getValue() + "』を登録しました。");
+
+        return "index";
     }
 }

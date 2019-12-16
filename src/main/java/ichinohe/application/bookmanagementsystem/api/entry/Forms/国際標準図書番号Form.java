@@ -10,5 +10,5 @@ import lombok.ToString;
 @ToString(includeFieldNames = false)
 public class 国際標準図書番号Form {
     @Getter
-    public final String value;
+    private final String value;
 }
