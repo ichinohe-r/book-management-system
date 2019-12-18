@@ -1,5 +1,6 @@
 package ichinohe.application.bookmanagementsystem.api.entry;
 
+import ichinohe.application.bookmanagementsystem.domain.Result;
 import ichinohe.application.bookmanagementsystem.domain.entry.受付日時;
 import ichinohe.application.bookmanagementsystem.domain.entry.書籍登録申込書;
 import ichinohe.application.bookmanagementsystem.service.entry.Book登録Service;
@@ -23,9 +24,9 @@ public class 書籍情報登録API {
 
         書籍登録申込書 application = request.createApplication(受付日時.create());
 
-        service.entry(application);
+        Result result = service.entry(application);
 
-        model.addAttribute("message", "書籍『" + application.getBookTitle().getValue() + "』を登録しました。");
+        model.addAttribute("message", "書籍『" + application.getBookTitle().getValue() + "』を"+ result + "しました。");
 
         return "index";
     }
