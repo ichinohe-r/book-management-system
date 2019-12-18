@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class 書籍情報登録API {
 
     @Autowired
-    Book登録Service service;
+    private Book登録Service service;
 
     public static final String URI = "/book-entry";
     public static final String NAME = "書籍情報登録API";
