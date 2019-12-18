@@ -9,7 +9,6 @@ package api{
         著者Form
         書籍名Form
         国際標準図書番号Form
-        システムの書籍管理番号Form
 
         書籍登録申込書 createApplication()
     }
