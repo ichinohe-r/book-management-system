@@ -15,7 +15,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @AllArgsConstructor
 @ToString(includeFieldNames = false)
-public class 書籍情報登録Request {
+public class 書籍情報登録RequestForms {
 
     private final 著者Form authorForm;
 
@@ -23,7 +23,7 @@ public class 書籍情報登録Request {
 
     private final 国際標準図書番号Form isbnForm;
 
-    public 書籍登録申込書 create(受付日時 receptionDateAndTime) {
+    public 書籍登録申込書 createApplication(受付日時 receptionDateAndTime) {
         return new 書籍登録申込書(
                 new 著者(authorForm.getValue()),
                 new 書籍名(bookTitleForm.getValue()),

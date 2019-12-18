@@ -11,16 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class 書籍情報登録API {
-    public final String URI = "/book-entry";
-    public final String NAME = "書籍情報登録API";
 
     @Autowired
     Book登録Service service;
 
-    @RequestMapping(value = URI, method = RequestMethod.GET)
-    public String apply(書籍情報登録Request request, Model model) {
+    public static final String URI = "/book-entry";
+    public static final String NAME = "書籍情報登録API";
 
-        書籍登録申込書 application = request.create(受付日時.create());
+    @RequestMapping(value = URI, method = RequestMethod.GET)
+    public String apply(書籍情報登録RequestForms request, Model model) {
+
+        書籍登録申込書 application = request.createApplication(受付日時.create());
 
         service.entry(application);
 
