@@ -5,19 +5,13 @@ package api{
         書籍登録サービス.apply()
     }
 
-    class 書籍情報登録Forms{
+    class 書籍情報登録RequestForms{
         著者Form
         書籍名Form
         国際標準図書番号Form
         システムの書籍管理番号Form
 
-        書籍登録申込書 create()
-    }
-
-    class 書籍情報登録Request{
-        書籍情報登録Forms
-
-        書籍登録申込書 get書籍登録申込書()
+        書籍登録申込書 createApplication()
     }
 
     class 書籍情報変更API{
@@ -91,8 +85,7 @@ package datasource{
 書籍情報登録API --> 書籍登録サービス
 書籍登録サービス --> 書籍登録申込書
 
-書籍情報登録API --> 書籍情報登録Request
-書籍情報登録Request --> 書籍情報登録Forms
+書籍情報登録API --> 書籍情報登録RequestForms
 書籍情報登録Impl --|> 書籍情報登録Repository
 書籍登録サービス --> 書籍管理ポリシー
 @enduml
