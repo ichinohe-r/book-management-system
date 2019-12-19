@@ -8,6 +8,8 @@ import ichinohe.application.bookmanagementsystem.domain.entry.書籍登録申込
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public class BookManagementImpl implements BookManagementRepository {
     @Autowired
@@ -25,9 +27,8 @@ public class BookManagementImpl implements BookManagementRepository {
     }
 
     @Override
-    public 書籍 find(国際標準図書番号 isbn) {
-        return bookFindMapper.select(
-                isbn.getValue()
-        );
+    public Optional<書籍> findOrThrow(国際標準図書番号 isbn) {
+        return Optional.ofNullable(bookFindMapper.select(
+                isbn.getValue()));
     }
 }

@@ -4,18 +4,19 @@ import ichinohe.application.bookmanagementsystem.domain.entry.書籍;
 import ichinohe.application.bookmanagementsystem.domain.entry.書籍登録申込書;
 import ichinohe.application.bookmanagementsystem.service.CheckResult;
 
+import java.util.Optional;
+
 public class BookManagementPolicy {
     public static CheckResult judge(
             書籍登録申込書 bookEntryApplication,
-            書籍 book) {
+            Optional<書籍> book) {
 
         System.out.println("書籍登録申込書：" + bookEntryApplication);
 
         System.out.println("書籍：" + book);
-
-        if (book.getBookTitle().equals(bookEntryApplication.getBookTitle())) {
-            return CheckResult.EXIST;
-        }
+        /*
+        チェックロジックはまだ未実装
+         */
         return CheckResult.OK;
     }
 }

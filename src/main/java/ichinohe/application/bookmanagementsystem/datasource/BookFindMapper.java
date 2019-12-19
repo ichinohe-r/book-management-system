@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface BookFindMapper {
-    @Select("SELECT isbn " +
+    @Select("SELECT author, book_title, isbn " +
             "FROM book_info " +
             "WHERE " +
             "isbn = #{isbn}"

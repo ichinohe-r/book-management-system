@@ -9,6 +9,8 @@ import ichinohe.application.bookmanagementsystem.service.CheckResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class Book登録Service {
     @Autowired
@@ -27,9 +29,9 @@ public class Book登録Service {
 
         国際標準図書番号 isbn = application.getIsbn();
 
-        System.out.println("書籍:"+ bookManagementRepository.find(isbn));
+        System.out.println("書籍:"+ bookManagementRepository.findOrThrow(isbn));
 
-        CheckResult checkResult = BookManagementPolicy.judge(application, bookManagementRepository.find(isbn));
+        CheckResult checkResult = BookManagementPolicy.judge(application, bookManagementRepository.findOrThrow(isbn));
 
         if (!checkResult.isOK()) {
             return Result.EXIST;
