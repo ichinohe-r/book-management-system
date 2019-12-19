@@ -5,12 +5,10 @@ import ichinohe.application.bookmanagementsystem.domain.BookManagementRepository
 import ichinohe.application.bookmanagementsystem.domain.entry.国際標準図書番号;
 import ichinohe.application.bookmanagementsystem.domain.entry.書籍;
 import ichinohe.application.bookmanagementsystem.domain.entry.書籍登録申込書;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@MapperScan(basePackages = { "ichinohe.application.bookmanagementsystem.datasource"})
 public class BookManagementImpl implements BookManagementRepository {
     @Autowired
     private 書籍情報登録Mapper bookInfoEntryMapper;
