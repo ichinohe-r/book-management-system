@@ -1,13 +1,13 @@
 package ichinohe.application.bookmanagementsystem.domain;
 
-import ichinohe.application.bookmanagementsystem.domain.entry.国際標準図書番号;
-import ichinohe.application.bookmanagementsystem.domain.entry.書籍登録申込書;
-import ichinohe.application.bookmanagementsystem.service.CheckResult;
+import ichinohe.application.bookmanagementsystem.domain.entry.InternationalStandardBookNumber;
+import ichinohe.application.bookmanagementsystem.domain.entry.BookEntryApplication;
+import ichinohe.application.bookmanagementsystem.service.BookEntryInfoConfirmResult;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BookManagementRepository {
-    void apply(書籍登録申込書 application);
+    void apply(BookEntryApplication application);
 
-    CheckResult check(国際標準図書番号 isbn);
+    BookEntryInfoConfirmResult check(InternationalStandardBookNumber isbn);
 }

@@ -10,11 +10,11 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 @EqualsAndHashCode
 @ToString(includeFieldNames = false)
-public class 受付日時 {
+public class ReceiptDateTime {
     @Getter
     private final LocalDateTime value;
 
-    public static 受付日時 create() {
-        return new 受付日時(LocalDateTime.now());
+    public static ReceiptDateTime create() {
+        return new ReceiptDateTime(LocalDateTime.now());
     }
 }

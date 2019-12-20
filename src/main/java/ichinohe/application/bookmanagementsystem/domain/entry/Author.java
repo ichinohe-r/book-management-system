@@ -8,7 +8,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @AllArgsConstructor
 @ToString(includeFieldNames = false)
-public class 書籍名 {
+public class Author {
     @Getter
     private final String value;
 }

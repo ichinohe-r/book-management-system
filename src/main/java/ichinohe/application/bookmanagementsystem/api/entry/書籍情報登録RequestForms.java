@@ -3,8 +3,8 @@ package ichinohe.application.bookmanagementsystem.api.entry;
 import ichinohe.application.bookmanagementsystem.api.entry.Forms.国際標準図書番号Form;
 import ichinohe.application.bookmanagementsystem.api.entry.Forms.書籍名Form;
 import ichinohe.application.bookmanagementsystem.api.entry.Forms.著者Form;
-import ichinohe.application.bookmanagementsystem.domain.entry.受付日時;
-import ichinohe.application.bookmanagementsystem.domain.entry.書籍登録申込書;
+import ichinohe.application.bookmanagementsystem.domain.entry.ReceiptDateTime;
+import ichinohe.application.bookmanagementsystem.domain.entry.BookEntryApplication;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -20,8 +20,8 @@ public class 書籍情報登録RequestForms {
 
     private final 国際標準図書番号Form isbnForm;
 
-    public 書籍登録申込書 createApplication(受付日時 receptionDateAndTime) {
-        return new 書籍登録申込書(
+    public BookEntryApplication createApplication(ReceiptDateTime receptionDateAndTime) {
+        return new BookEntryApplication(
                 authorForm.getValueObject(),
                 bookTitleForm.getValueObject(),
                 isbnForm.getValueObject(),

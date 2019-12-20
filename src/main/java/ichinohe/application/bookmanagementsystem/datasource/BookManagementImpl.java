@@ -2,12 +2,14 @@ package ichinohe.application.bookmanagementsystem.datasource;
 
 import ichinohe.application.bookmanagementsystem.datasource.entry.書籍情報登録Mapper;
 import ichinohe.application.bookmanagementsystem.domain.BookManagementRepository;
-import ichinohe.application.bookmanagementsystem.domain.entry.国際標準図書番号;
-import ichinohe.application.bookmanagementsystem.domain.entry.書籍;
-import ichinohe.application.bookmanagementsystem.domain.entry.書籍登録申込書;
-import ichinohe.application.bookmanagementsystem.service.CheckResult;
+import ichinohe.application.bookmanagementsystem.domain.entry.Book;
+import ichinohe.application.bookmanagementsystem.domain.entry.BookEntryApplication;
+import ichinohe.application.bookmanagementsystem.domain.entry.InternationalStandardBookNumber;
+import ichinohe.application.bookmanagementsystem.service.BookEntryInfoConfirmResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class BookManagementImpl implements BookManagementRepository {
@@ -17,7 +19,7 @@ public class BookManagementImpl implements BookManagementRepository {
     private BookFindMapper bookFindMapper;
 
     @Override
-    public void apply(書籍登録申込書 application) {
+    public void apply(BookEntryApplication application) {
         bookInfoEntryMapper.insert(
                 application.getAuthor().getValue(),
                 application.getBookTitle().getValue(),
@@ -26,11 +28,11 @@ public class BookManagementImpl implements BookManagementRepository {
     }
 
     @Override
-    public CheckResult check(国際標準図書番号 isbn) {
-        書籍 book = bookFindMapper.select(isbn.getValue());
-        if (book == null) {
-            return CheckResult.OK;
+    public BookEntryInfoConfirmResult check(InternationalStandardBookNumber isbn) {
+        List<Book> bookLists = bookFindMapper.select(isbn.getValue());
+        if (bookLists == null) {
+            return BookEntryInfoConfirmResult.NOT_EXISTS;
         }
-        return CheckResult.EXIST;
+        return BookEntryInfoConfirmResult.EXIST;
     }
 }

@@ -1,6 +1,6 @@
 package ichinohe.application.bookmanagementsystem.api.entry.Forms;
 
-import ichinohe.application.bookmanagementsystem.domain.entry.書籍名;
+import ichinohe.application.bookmanagementsystem.domain.entry.BookTitle;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -13,7 +13,7 @@ public class 書籍名Form {
     @Getter
     private final String value;
 
-    public 書籍名 getValueObject(){
-        return new 書籍名(value);
+    public BookTitle getValueObject(){
+        return new BookTitle(value);
     }
 }

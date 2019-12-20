@@ -1,9 +1,11 @@
 package ichinohe.application.bookmanagementsystem.datasource;
 
-import ichinohe.application.bookmanagementsystem.domain.entry.書籍;
+import ichinohe.application.bookmanagementsystem.domain.entry.Book;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 @Mapper
 public interface BookFindMapper {
@@ -12,7 +14,7 @@ public interface BookFindMapper {
             "WHERE " +
             "isbn = #{isbn}"
     )
-    書籍 select(
+    List<Book> select(
             @Param("isbn") String isbn
     );
 }
