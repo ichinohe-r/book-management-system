@@ -1,6 +1,5 @@
 package ichinohe.application.bookmanagementsystem.service.entry;
 
-import ichinohe.application.bookmanagementsystem.domain.BookManagementPolicy;
 import ichinohe.application.bookmanagementsystem.domain.BookManagementRepository;
 import ichinohe.application.bookmanagementsystem.domain.Result;
 import ichinohe.application.bookmanagementsystem.domain.entry.国際標準図書番号;
@@ -8,8 +7,6 @@ import ichinohe.application.bookmanagementsystem.domain.entry.書籍登録申込
 import ichinohe.application.bookmanagementsystem.service.CheckResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class Book登録Service {
@@ -26,16 +23,12 @@ public class Book登録Service {
     }
 
     private Result entryCheck(書籍登録申込書 application) {
-
         国際標準図書番号 isbn = application.getIsbn();
+        CheckResult checkResult = bookManagementRepository.check(isbn);
 
-        System.out.println("書籍:"+ bookManagementRepository.findOrThrow(isbn));
-
-        CheckResult checkResult = BookManagementPolicy.judge(application, bookManagementRepository.findOrThrow(isbn));
-
-        if (!checkResult.isOK()) {
-            return Result.EXIST;
+        if (checkResult.isOK()) {
+            return Result.OK;
         }
-        return Result.OK;
+        return Result.EXIST;
     }
 }

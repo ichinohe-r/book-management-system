@@ -5,10 +5,9 @@ import ichinohe.application.bookmanagementsystem.domain.BookManagementRepository
 import ichinohe.application.bookmanagementsystem.domain.entry.国際標準図書番号;
 import ichinohe.application.bookmanagementsystem.domain.entry.書籍;
 import ichinohe.application.bookmanagementsystem.domain.entry.書籍登録申込書;
+import ichinohe.application.bookmanagementsystem.service.CheckResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import java.util.Optional;
 
 @Repository
 public class BookManagementImpl implements BookManagementRepository {
@@ -27,8 +26,11 @@ public class BookManagementImpl implements BookManagementRepository {
     }
 
     @Override
-    public Optional<書籍> findOrThrow(国際標準図書番号 isbn) {
-        return Optional.ofNullable(bookFindMapper.select(
-                isbn.getValue()));
+    public CheckResult check(国際標準図書番号 isbn) {
+        書籍 book = bookFindMapper.select(isbn.getValue());
+        if (book == null) {
+            return CheckResult.OK;
+        }
+        return CheckResult.EXIST;
     }
 }

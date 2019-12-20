@@ -1,10 +1,6 @@
 package ichinohe.application.bookmanagementsystem.service;
 
-import ichinohe.application.bookmanagementsystem.domain.entry.書籍;
-
-import java.util.function.Supplier;
-
-public enum CheckResult implements Supplier<書籍> {
+public enum CheckResult {
     OK,
     EXIST;
 
@@ -12,8 +8,4 @@ public enum CheckResult implements Supplier<書籍> {
         return this == CheckResult.OK;
     }
 
-    @Override
-    public 書籍 get() {
-        return null;
-    }
 }
