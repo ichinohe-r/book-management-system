@@ -23,8 +23,7 @@ public class Book登録Service {
     }
 
     private Result entryCheck(BookEntryApplication application) {
-        InternationalStandardBookNumber isbn = application.getIsbn();
-        BookEntryInfoConfirmResult result = bookManagementRepository.check(isbn);
+        BookEntryInfoConfirmResult result = bookManagementRepository.check(application);
 
         if (result.isOK()) {
             return Result.EXIST;

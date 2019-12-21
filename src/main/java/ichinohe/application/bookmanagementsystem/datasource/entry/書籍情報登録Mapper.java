@@ -9,7 +9,7 @@ public interface 書籍情報登録Mapper {
     @Insert(
             "INSERT INTO book_info (" +
                     "author, " +
-                    "title, " +
+                    "book_title, " +
                     "isbn, " +
                     "event_date_time" +
                     ") " +

@@ -4,12 +4,9 @@ import ichinohe.application.bookmanagementsystem.datasource.entry.書籍情報�
 import ichinohe.application.bookmanagementsystem.domain.BookManagementRepository;
 import ichinohe.application.bookmanagementsystem.domain.entry.Book;
 import ichinohe.application.bookmanagementsystem.domain.entry.BookEntryApplication;
-import ichinohe.application.bookmanagementsystem.domain.entry.InternationalStandardBookNumber;
 import ichinohe.application.bookmanagementsystem.service.BookEntryInfoConfirmResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public class BookManagementImpl implements BookManagementRepository {
@@ -28,8 +25,13 @@ public class BookManagementImpl implements BookManagementRepository {
     }
 
     @Override
-    public BookEntryInfoConfirmResult check(InternationalStandardBookNumber isbn) {
-        List<Book> bookLists = bookFindMapper.select(isbn.getValue());
+    public BookEntryInfoConfirmResult check(BookEntryApplication application) {
+
+        Book bookLists = new Book(
+                bookFindMapper.selectAuthor(application.getAuthor().getValue()),
+                bookFindMapper.selectBookTitle(application.getBookTitle().getValue()),
+                bookFindMapper.selectIsbn(application.getIsbn().getValue())
+        );
         if (bookLists == null) {
             return BookEntryInfoConfirmResult.NOT_EXISTS;
         }

@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS book_info;
 CREATE TABLE book_info (
     system_book_management_number INT PRIMARY KEY AUTO_INCREMENT,
     author VARCHAR,
-    title VARCHAR,
+    book_title VARCHAR,
     isbn VARCHAR(17),
     event_date_time DATETIME
 );
