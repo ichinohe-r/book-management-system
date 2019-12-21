@@ -1,5 +1,6 @@
 package ichinohe.application.bookmanagementsystem.datasource;
 
+import ichinohe.application.bookmanagementsystem.datasource.entry.ResultBook;
 import ichinohe.application.bookmanagementsystem.datasource.entry.書籍情報登録Mapper;
 import ichinohe.application.bookmanagementsystem.domain.BookManagementRepository;
 import ichinohe.application.bookmanagementsystem.domain.entry.Book;
@@ -27,12 +28,14 @@ public class BookManagementImpl implements BookManagementRepository {
     @Override
     public BookEntryInfoConfirmResult check(BookEntryApplication application) {
 
-        Book bookLists = new Book(
-                bookFindMapper.selectAuthor(application.getAuthor().getValue()),
-                bookFindMapper.selectBookTitle(application.getBookTitle().getValue()),
-                bookFindMapper.selectIsbn(application.getIsbn().getValue())
-        );
-        if (bookLists == null) {
+//        Book bookLists = new Book(
+//                bookFindMapper.selectAuthor(application.getAuthor().getValue()),
+//                bookFindMapper.selectBookTitle(application.getBookTitle().getValue()),
+//                bookFindMapper.selectIsbn(application.getIsbn().getValue())
+//        );
+        ResultBook resultBook = bookFindMapper.findBook(application.getIsbn().getValue());
+        Book book = resultBook.restore(resultBook);
+        if (book == null) {
             return BookEntryInfoConfirmResult.NOT_EXISTS;
         }
         return BookEntryInfoConfirmResult.EXIST;

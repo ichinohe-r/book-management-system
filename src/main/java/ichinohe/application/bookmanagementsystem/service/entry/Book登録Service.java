@@ -2,7 +2,6 @@ package ichinohe.application.bookmanagementsystem.service.entry;
 
 import ichinohe.application.bookmanagementsystem.domain.BookManagementRepository;
 import ichinohe.application.bookmanagementsystem.domain.Result;
-import ichinohe.application.bookmanagementsystem.domain.entry.InternationalStandardBookNumber;
 import ichinohe.application.bookmanagementsystem.domain.entry.BookEntryApplication;
 import ichinohe.application.bookmanagementsystem.service.BookEntryInfoConfirmResult;
 import org.springframework.beans.factory.annotation.Autowired;
