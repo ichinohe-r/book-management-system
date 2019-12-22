@@ -1,4 +1,4 @@
-package ichinohe.application.bookmanagementsystem.service.entry;
+package ichinohe.application.bookmanagementsystem.datasource.core;
 
 import ichinohe.application.bookmanagementsystem.domain.core.Author;
 import ichinohe.application.bookmanagementsystem.domain.core.Book;

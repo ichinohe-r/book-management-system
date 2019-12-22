@@ -1,6 +1,6 @@
 package ichinohe.application.bookmanagementsystem.datasource;
 
-import ichinohe.application.bookmanagementsystem.service.entry.ResultBook;
+import ichinohe.application.bookmanagementsystem.datasource.core.ResultBook;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

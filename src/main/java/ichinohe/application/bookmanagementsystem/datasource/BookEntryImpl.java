@@ -1,12 +1,12 @@
 package ichinohe.application.bookmanagementsystem.datasource;
 
+import ichinohe.application.bookmanagementsystem.datasource.core.ResultBook;
 import ichinohe.application.bookmanagementsystem.datasource.entry.BookEntryMapper;
 import ichinohe.application.bookmanagementsystem.domain.core.BookEntity;
 import ichinohe.application.bookmanagementsystem.domain.core.BookManagementRepository;
 import ichinohe.application.bookmanagementsystem.domain.core.UpdateDateTime;
 import ichinohe.application.bookmanagementsystem.domain.entry.BookEntryApplication;
-import ichinohe.application.bookmanagementsystem.service.ExistConfirmResult;
-import ichinohe.application.bookmanagementsystem.service.entry.ResultBook;
+import ichinohe.application.bookmanagementsystem.domain.entry.ExistConfirmResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -25,7 +25,7 @@ public class BookEntryImpl implements BookManagementRepository {
                 application.getPublisher().getValue(),
                 application.getReceptionDateAndTime().getValue().toString(),
                 UpdateDateTime.create().getValue().toString()
-                );
+        );
     }
 
     @Override

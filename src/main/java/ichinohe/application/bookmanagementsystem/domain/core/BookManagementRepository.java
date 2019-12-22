@@ -1,8 +1,7 @@
 package ichinohe.application.bookmanagementsystem.domain.core;
 
-import ichinohe.application.bookmanagementsystem.domain.core.BookEntity;
 import ichinohe.application.bookmanagementsystem.domain.entry.BookEntryApplication;
-import ichinohe.application.bookmanagementsystem.service.ExistConfirmResult;
+import ichinohe.application.bookmanagementsystem.domain.entry.ExistConfirmResult;
 import org.springframework.stereotype.Repository;
 
 @Repository
