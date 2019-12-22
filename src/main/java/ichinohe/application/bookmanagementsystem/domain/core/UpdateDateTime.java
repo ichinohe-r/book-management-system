@@ -1,6 +1,5 @@
-package ichinohe.application.bookmanagementsystem.domain;
+package ichinohe.application.bookmanagementsystem.domain.core;
 
-import ichinohe.application.bookmanagementsystem.domain.entry.ReceiptDateTime;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

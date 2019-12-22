@@ -1,5 +1,10 @@
 package ichinohe.application.bookmanagementsystem.domain.entry;
 
+import ichinohe.application.bookmanagementsystem.domain.core.Author;
+import ichinohe.application.bookmanagementsystem.domain.core.Book;
+import ichinohe.application.bookmanagementsystem.domain.core.BookTitle;
+import ichinohe.application.bookmanagementsystem.domain.core.Publisher;
+import ichinohe.application.bookmanagementsystem.domain.core.ReceiptDateTime;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

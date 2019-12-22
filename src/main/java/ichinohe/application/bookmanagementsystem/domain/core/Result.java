@@ -1,10 +1,10 @@
-package ichinohe.application.bookmanagementsystem.domain;
+package ichinohe.application.bookmanagementsystem.domain.core;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * サービスクラスの処理結果
+ * 結果
  */
 @AllArgsConstructor
 public enum Result {

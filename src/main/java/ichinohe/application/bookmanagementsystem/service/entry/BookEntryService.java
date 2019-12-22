@@ -1,8 +1,8 @@
 package ichinohe.application.bookmanagementsystem.service.entry;
 
-import ichinohe.application.bookmanagementsystem.domain.BookManagementPolicy;
-import ichinohe.application.bookmanagementsystem.domain.BookManagementRepository;
-import ichinohe.application.bookmanagementsystem.domain.Result;
+import ichinohe.application.bookmanagementsystem.domain.core.BookManagementPolicy;
+import ichinohe.application.bookmanagementsystem.domain.core.BookManagementRepository;
+import ichinohe.application.bookmanagementsystem.domain.core.Result;
 import ichinohe.application.bookmanagementsystem.domain.entry.BookEntryApplication;
 import ichinohe.application.bookmanagementsystem.service.EventRecordService;
 import org.springframework.beans.factory.annotation.Autowired;

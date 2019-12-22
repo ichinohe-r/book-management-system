@@ -1,4 +1,4 @@
-package ichinohe.application.bookmanagementsystem.domain;
+package ichinohe.application.bookmanagementsystem.domain.core;
 
 import ichinohe.application.bookmanagementsystem.service.ExistConfirmResult;
 

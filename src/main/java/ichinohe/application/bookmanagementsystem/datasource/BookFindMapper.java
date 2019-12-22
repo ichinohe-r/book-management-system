@@ -1,8 +1,5 @@
 package ichinohe.application.bookmanagementsystem.datasource;
 
-import ichinohe.application.bookmanagementsystem.domain.entry.Author;
-import ichinohe.application.bookmanagementsystem.domain.entry.BookTitle;
-import ichinohe.application.bookmanagementsystem.domain.entry.Publisher;
 import ichinohe.application.bookmanagementsystem.service.entry.ResultBook;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

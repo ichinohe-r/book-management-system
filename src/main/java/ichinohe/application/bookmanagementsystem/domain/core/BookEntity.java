@@ -1,8 +1,5 @@
-package ichinohe.application.bookmanagementsystem.domain;
+package ichinohe.application.bookmanagementsystem.domain.core;
 
-import ichinohe.application.bookmanagementsystem.domain.entry.Author;
-import ichinohe.application.bookmanagementsystem.domain.entry.BookTitle;
-import ichinohe.application.bookmanagementsystem.domain.entry.Publisher;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

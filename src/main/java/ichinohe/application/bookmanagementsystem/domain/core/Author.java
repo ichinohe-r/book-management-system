@@ -1,4 +1,4 @@
-package ichinohe.application.bookmanagementsystem.domain.entry;
+package ichinohe.application.bookmanagementsystem.domain.core;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

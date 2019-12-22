@@ -1,6 +1,6 @@
 package ichinohe.application.bookmanagementsystem.api.entry.Forms;
 
-import ichinohe.application.bookmanagementsystem.domain.entry.BookTitle;
+import ichinohe.application.bookmanagementsystem.domain.core.BookTitle;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -1,8 +1,8 @@
 package ichinohe.application.bookmanagementsystem.api.entry;
 
-import ichinohe.application.bookmanagementsystem.domain.Result;
+import ichinohe.application.bookmanagementsystem.domain.core.Result;
 import ichinohe.application.bookmanagementsystem.domain.entry.BookEntryApplication;
-import ichinohe.application.bookmanagementsystem.domain.entry.ReceiptDateTime;
+import ichinohe.application.bookmanagementsystem.domain.core.ReceiptDateTime;
 import ichinohe.application.bookmanagementsystem.service.entry.BookEntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
