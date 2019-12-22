@@ -1,19 +1,22 @@
 package ichinohe.application.bookmanagementsystem.api.entry.Forms;
 
-import ichinohe.application.bookmanagementsystem.domain.entry.著者;
+import ichinohe.application.bookmanagementsystem.domain.core.BookTitle;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * << Value Object >> フォームに入力された書籍名の内容
+ */
 @EqualsAndHashCode
 @AllArgsConstructor
 @ToString(includeFieldNames = false)
-public class 著者Form {
+public class BookTitleForm {
     @Getter
     private final String value;
 
-    public 著者 getValueObject(){
-        return new 著者(value);
+    public BookTitle getValueObject() {
+        return new BookTitle(value);
     }
 }

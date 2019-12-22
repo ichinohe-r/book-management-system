@@ -10,20 +10,13 @@ package api{
         書籍名Form
         国際標準図書番号Form
 
-        書籍登録申込書 createApplication()
-    }
-
-    class 書籍情報変更API{
-    }
-
-    class 書籍情報削除API{
+        書籍登録申込書 createApplication(ReceiptDateTime receptionDateAndTime)
     }
 }
 
 package service{
     class 書籍登録サービス{
-        書籍管理ポリシー 書籍登録可否check(書籍登録申込書)
-        void entry(書籍登録申込書)
+        Result entry(書籍登録申込書)
     }
 }
 
@@ -33,10 +26,6 @@ package domain{
     class 書籍登録申込書{
     }
 
-    class 書籍管理ポリシー {
-        ok 未登録の書籍です
-        ng 既に登録済みの書籍です
-    }
 
     class "<Entity>\n書籍" as 書籍{
     }
@@ -62,17 +51,11 @@ package domain{
     }
 
     interface 書籍情報登録Repository{
-        void apply()
+        void apply(BookEntryApplication application)
+        BookEntryInfoConfirmResult check(BookEntryApplication application)
     }
 }
 
-
-package datasource{
-
-    class 書籍情報登録Impl{
-        apply()
-    }
-}
 
 
 書籍 --> 著者
@@ -85,6 +68,5 @@ package datasource{
 書籍登録サービス --> 書籍登録申込書
 
 書籍情報登録API --> 書籍情報登録RequestForms
-書籍情報登録Impl --|> 書籍情報登録Repository
-書籍登録サービス --> 書籍管理ポリシー
+
 @enduml

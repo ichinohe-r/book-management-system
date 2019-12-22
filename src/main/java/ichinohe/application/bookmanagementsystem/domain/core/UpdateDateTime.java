@@ -1,4 +1,4 @@
-package ichinohe.application.bookmanagementsystem.domain.entry;
+package ichinohe.application.bookmanagementsystem.domain.core;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -7,14 +7,17 @@ import lombok.ToString;
 
 import java.time.LocalDateTime;
 
+/**
+ * << Value Object >> 更新日時
+ */
 @RequiredArgsConstructor
 @EqualsAndHashCode
 @ToString(includeFieldNames = false)
-public class 受付日時 {
+public class UpdateDateTime {
     @Getter
     private final LocalDateTime value;
 
-    public static 受付日時 create() {
-        return new 受付日時(LocalDateTime.now());
+    public static UpdateDateTime create() {
+        return new UpdateDateTime(LocalDateTime.now());
     }
 }

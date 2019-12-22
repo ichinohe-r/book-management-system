@@ -5,21 +5,10 @@
     <title>Top Page</title>
 </head>
 <body>
-    <h1 th:text="${message}"></h1>
-    <form role="form" action="/book-entry" th:action="@{/book-entry}" method="get">
-        <div>
-            <h2>著者</h2>
-            <input type="text" id="authorForm" name="authorForm"/>
-        </div>
-        <div>
-            <h2>書籍名</h2>
-            <input type="text" id="bookTitleForm" name="bookTitleForm"/>
-        </div>
-        <div>
-            <h2>ISBN 国際標準図書番号</h2>
-            <input type="text" id="isbnForm" name="isbnForm"/>
-        </div>
-        <button type="submit">登録</button>
-    </form>
+    <h1>書籍管理システム</h1>
+        <h2>検索画面</h2>
+        <h2><a href="entry.html" th:href="@{/book-entry-view}">登録画面</a></h2>
+        <h2>変更画面</h2>
+        <h2>削除画面</h2>
 </body>
 </html>

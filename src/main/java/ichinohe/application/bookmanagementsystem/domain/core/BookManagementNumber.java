@@ -1,14 +1,17 @@
-package ichinohe.application.bookmanagementsystem.domain.entry;
+package ichinohe.application.bookmanagementsystem.domain.core;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * << Value Object >> 書籍管理番号
+ */
 @EqualsAndHashCode
 @AllArgsConstructor
 @ToString(includeFieldNames = false)
-public class 国際標準図書番号 {
+public class BookManagementNumber {
     @Getter
-    private final String value;
+    private final Integer value;
 }
