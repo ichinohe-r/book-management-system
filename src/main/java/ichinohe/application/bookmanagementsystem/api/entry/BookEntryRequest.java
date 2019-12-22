@@ -15,7 +15,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @AllArgsConstructor
 @ToString(includeFieldNames = false)
-public class BookEntryRequestForms {
+public class BookEntryRequest {
 
     private final AuthorForm authorForm;
 
