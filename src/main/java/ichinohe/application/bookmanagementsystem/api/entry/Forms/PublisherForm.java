@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 /**
- * << Value Object >> フォームに入力された国際標準図書番号の内容
+ * << Value Object >> フォームに入力された出版社の内容
  */
 @EqualsAndHashCode
 @AllArgsConstructor
