@@ -5,10 +5,10 @@ import ichinohe.application.bookmanagementsystem.domain.entry.ExistConfirmResult
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BookManagementRepository {
+public interface BookRepository {
     void apply(BookEntryApplication application);
 
     ExistConfirmResult check(BookEntryApplication application);
 
-    BookEntity find(BookEntryApplication application);
+//    BookEntity find(BookEntryApplication application);
 }
