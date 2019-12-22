@@ -3,7 +3,7 @@ package ichinohe.application.bookmanagementsystem.service.entry;
 import ichinohe.application.bookmanagementsystem.domain.entry.Author;
 import ichinohe.application.bookmanagementsystem.domain.entry.Book;
 import ichinohe.application.bookmanagementsystem.domain.entry.BookTitle;
-import ichinohe.application.bookmanagementsystem.domain.entry.InternationalStandardBookNumber;
+import ichinohe.application.bookmanagementsystem.domain.entry.Publisher;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -15,15 +15,16 @@ import lombok.ToString;
 @EqualsAndHashCode
 @ToString(includeFieldNames = false)
 public class ResultBook {
+    private final Integer book_management_number = null;
     private final String author;
     private final String book_title;
-    private final String isbn;
+    private final String publisher;
 
     public Book restore(ResultBook resultBook) {
         return new Book(
                 new Author(resultBook.author),
                 new BookTitle(resultBook.book_title),
-                new InternationalStandardBookNumber(resultBook.isbn)
+                new Publisher(resultBook.publisher)
         );
     }
 }

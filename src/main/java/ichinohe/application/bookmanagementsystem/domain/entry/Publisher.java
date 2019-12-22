@@ -2,18 +2,16 @@ package ichinohe.application.bookmanagementsystem.domain.entry;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.ToString;
 
 /**
- * << 集合 Value Object >> 書籍
+ * << Value Object >> 発行元
  */
-@AllArgsConstructor
 @EqualsAndHashCode
+@AllArgsConstructor
 @ToString(includeFieldNames = false)
-public class Book {
-    private final Author author;
-
-    private final BookTitle bookTitle;
-
-    private final Publisher publisher;
+public class Publisher {
+    @Getter
+    private final String value;
 }

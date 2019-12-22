@@ -22,7 +22,7 @@ public class BookEntryApi {
     public static final String URI = "/book-entry";
     public static final String NAME = "書籍情報登録API";
 
-    @RequestMapping(value = URI, method = RequestMethod.GET)
+    @RequestMapping(value = URI, method = RequestMethod.POST)
     public String apply(BookEntryRequestForms request, Model model) {
         BookEntryApplication application = request.createApplication(ReceiptDateTime.create());
         Result result = service.entry(application);

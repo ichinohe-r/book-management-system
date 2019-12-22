@@ -2,60 +2,67 @@ package ichinohe.application.bookmanagementsystem.datasource;
 
 import ichinohe.application.bookmanagementsystem.domain.entry.Author;
 import ichinohe.application.bookmanagementsystem.domain.entry.BookTitle;
-import ichinohe.application.bookmanagementsystem.domain.entry.InternationalStandardBookNumber;
+import ichinohe.application.bookmanagementsystem.domain.entry.Publisher;
 import ichinohe.application.bookmanagementsystem.service.entry.ResultBook;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
- * 書籍情報を抽出
+ * 書籍を探す
  */
 @Mapper
+@Repository
 public interface BookFindMapper {
-    @Select("SELECT author, book_title, isbn " +
+    @Select("SELECT author, book_title, publisher " +
             "FROM book_info " +
             "WHERE " +
             "author = #{author} " +
             "AND " +
             "book_title = #{bookTitle} " +
             "AND " +
-            "isbn = #{isbn} " +
+            "publisher = #{publisher} " +
             "AND " +
             "ROWNUM <= 1" +
-            "ORDER BY system_book_management_number"
+            "ORDER BY book_management_number"
     )
     ResultBook findOneBook(
             @Param("author") String author,
             @Param("bookTitle") String bookTitle,
-            @Param("isbn") String isbn
+            @Param("publisher") String publisher
     );
 
 
-    @Select("SELECT author " +
+    @Select("SELECT author, book_title, publisher " +
             "FROM book_info " +
             "WHERE " +
-            "author = #{author}"
+            "author = #{author} " +
+            "ORDER BY book_management_number"
     )
-    Author selectAuthor(
+    List<ResultBook> findByAuthor(
             @Param("author") String author
     );
 
-    @Select("SELECT book_title " +
+    @Select("SELECT author, book_title, publisher " +
             "FROM book_info " +
             "WHERE " +
-            "book_title = #{bookTitle}"
+            "book_title = #{bookTitle} " +
+            "ORDER BY book_management_number"
     )
-    BookTitle selectBookTitle(
+    List<ResultBook>  findByBookTitle(
             @Param("bookTitle") String bookTitle
     );
 
-    @Select("SELECT isbn " +
+    @Select("SELECT author, book_title, publisher " +
             "FROM book_info " +
             "WHERE " +
-            "isbn = #{isbn}"
+            "publisher = #{publisher} " +
+            "ORDER BY book_management_number"
     )
-    InternationalStandardBookNumber selectIsbn(
-            @Param("isbn") String isbn
+    List<ResultBook>  findByPublisher(
+            @Param("publisher") String publisher
     );
 }

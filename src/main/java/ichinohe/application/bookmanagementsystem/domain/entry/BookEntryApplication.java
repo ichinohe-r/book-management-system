@@ -17,7 +17,7 @@ public class BookEntryApplication {
     @Getter
     private final BookTitle bookTitle;
     @Getter
-    private final InternationalStandardBookNumber isbn;
+    private final Publisher publisher;
     @Getter
     private final ReceiptDateTime receptionDateAndTime;
 
@@ -25,6 +25,6 @@ public class BookEntryApplication {
         return new Book(
                 new Author(author.getValue()),
                 new BookTitle(bookTitle.getValue()),
-                new InternationalStandardBookNumber(isbn.getValue()));
+                new Publisher(publisher.getValue()));
     }
 }

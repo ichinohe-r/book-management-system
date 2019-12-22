@@ -1,7 +1,9 @@
 package ichinohe.application.bookmanagementsystem.datasource;
 
 import ichinohe.application.bookmanagementsystem.datasource.entry.BookEntryMapper;
+import ichinohe.application.bookmanagementsystem.domain.BookEntity;
 import ichinohe.application.bookmanagementsystem.domain.BookManagementRepository;
+import ichinohe.application.bookmanagementsystem.domain.UpdateDateTime;
 import ichinohe.application.bookmanagementsystem.domain.entry.BookEntryApplication;
 import ichinohe.application.bookmanagementsystem.service.ExistConfirmResult;
 import ichinohe.application.bookmanagementsystem.service.entry.ResultBook;
@@ -9,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class BookManagementImpl implements BookManagementRepository {
+public class BookEntryImpl implements BookManagementRepository {
     @Autowired
     private BookEntryMapper bookInfoEntryMapper;
     @Autowired
@@ -20,8 +22,10 @@ public class BookManagementImpl implements BookManagementRepository {
         bookInfoEntryMapper.insert(
                 application.getAuthor().getValue(),
                 application.getBookTitle().getValue(),
-                application.getIsbn().getValue(),
-                application.getReceptionDateAndTime().getValue().toString());
+                application.getPublisher().getValue(),
+                application.getReceptionDateAndTime().getValue().toString(),
+                UpdateDateTime.create().getValue().toString()
+                );
     }
 
     @Override
@@ -29,12 +33,17 @@ public class BookManagementImpl implements BookManagementRepository {
         ResultBook resultBook = bookFindMapper.findOneBook(
                 application.getAuthor().getValue(),
                 application.getBookTitle().getValue(),
-                application.getIsbn().getValue()
+                application.getPublisher().getValue()
         );
 
         if (resultBook == null) {
             return ExistConfirmResult.NOT_EXIST;
         }
         return ExistConfirmResult.EXIST;
+    }
+
+    @Override
+    public BookEntity find(BookEntryApplication application) {
+        return null;
     }
 }

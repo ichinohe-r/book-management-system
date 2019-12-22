@@ -2,7 +2,7 @@ package ichinohe.application.bookmanagementsystem.api.entry;
 
 import ichinohe.application.bookmanagementsystem.api.entry.Forms.AuthorForm;
 import ichinohe.application.bookmanagementsystem.api.entry.Forms.BookTitleForm;
-import ichinohe.application.bookmanagementsystem.api.entry.Forms.InternationalStandardBookNumberForm;
+import ichinohe.application.bookmanagementsystem.api.entry.Forms.PublisherForm;
 import ichinohe.application.bookmanagementsystem.domain.entry.BookEntryApplication;
 import ichinohe.application.bookmanagementsystem.domain.entry.ReceiptDateTime;
 import lombok.AllArgsConstructor;
@@ -21,13 +21,13 @@ public class BookEntryRequestForms {
 
     private final BookTitleForm bookTitleForm;
 
-    private final InternationalStandardBookNumberForm isbnForm;
+    private final PublisherForm publisherForm;
 
     public BookEntryApplication createApplication(ReceiptDateTime receptionDateAndTime) {
         return new BookEntryApplication(
                 authorForm.getValueObject(),
                 bookTitleForm.getValueObject(),
-                isbnForm.getValueObject(),
+                publisherForm.getValueObject(),
                 receptionDateAndTime
         );
     }

@@ -57,18 +57,6 @@ package domain{
 }
 
 
-package datasource{
-
-    class 書籍情報登録Impl{
-        void apply(BookEntryApplication application)
-        BookEntryInfoConfirmResult check(BookEntryApplication application)
-    }
-
-    interface BookFindMapper{
-        ResultBook findBook()
-    }
-}
-
 
 書籍 --> 著者
 書籍 --> 書籍名
@@ -80,8 +68,5 @@ package datasource{
 書籍登録サービス --> 書籍登録申込書
 
 書籍情報登録API --> 書籍情報登録RequestForms
-書籍情報登録Impl --|> 書籍情報登録Repository
 
-書籍情報登録Impl --> BookFindMapper
-書籍情報登録Impl --> 書籍
 @enduml
