@@ -26,12 +26,6 @@ public class BookManagementImpl implements BookManagementRepository {
 
     @Override
     public ExistConfirmResult check(BookEntryApplication application) {
-
-//        Book bookLists = new Book(
-//                bookFindMapper.selectAuthor(application.getAuthor().getValue()),
-//                bookFindMapper.selectBookTitle(application.getBookTitle().getValue()),
-//                bookFindMapper.selectIsbn(application.getIsbn().getValue())
-//        );
         ResultBook resultBook = bookFindMapper.findOneBook(
                 application.getAuthor().getValue(),
                 application.getBookTitle().getValue(),

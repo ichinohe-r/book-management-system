@@ -16,7 +16,7 @@ public class BookTitleForm {
     @Getter
     private final String value;
 
-    public BookTitle getValueObject(){
+    public BookTitle getValueObject() {
         return new BookTitle(value);
     }
 }

@@ -7,7 +7,7 @@ public enum ExistConfirmResult {
     NOT_EXIST,
     EXIST;
 
-    public boolean isEXIST() {
+    public boolean isExist() {
         return this == ExistConfirmResult.EXIST;
     }
 

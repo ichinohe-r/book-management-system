@@ -24,13 +24,9 @@ public class BookEntryApi {
 
     @RequestMapping(value = URI, method = RequestMethod.GET)
     public String apply(BookEntryRequestForms request, Model model) {
-
         BookEntryApplication application = request.createApplication(ReceiptDateTime.create());
-
         Result result = service.entry(application);
-
         model.addAttribute("message", result.getResult());
-
         return "index";
     }
 }

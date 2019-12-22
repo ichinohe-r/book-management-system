@@ -16,7 +16,7 @@ public class AuthorForm {
     @Getter
     private final String value;
 
-    public Author getValueObject(){
+    public Author getValueObject() {
         return new Author(value);
     }
 }

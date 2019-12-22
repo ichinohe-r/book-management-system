@@ -19,7 +19,7 @@ public class ResultBook {
     private final String book_title;
     private final String isbn;
 
-    public Book restore(ResultBook resultBook){
+    public Book restore(ResultBook resultBook) {
         return new Book(
                 new Author(resultBook.author),
                 new BookTitle(resultBook.book_title),

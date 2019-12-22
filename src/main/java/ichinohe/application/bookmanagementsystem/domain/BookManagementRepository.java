@@ -7,6 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BookManagementRepository {
     void apply(BookEntryApplication application);
-
     ExistConfirmResult check(BookEntryApplication application);
 }

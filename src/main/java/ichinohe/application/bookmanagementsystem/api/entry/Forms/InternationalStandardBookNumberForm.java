@@ -16,7 +16,7 @@ public class InternationalStandardBookNumberForm {
     @Getter
     private final String value;
 
-    public InternationalStandardBookNumber getValueObject(){
+    public InternationalStandardBookNumber getValueObject() {
         return new InternationalStandardBookNumber(value);
     }
 }
