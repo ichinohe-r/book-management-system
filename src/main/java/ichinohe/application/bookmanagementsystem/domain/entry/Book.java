@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+/**
+ * << 集合 Value Object >> 書籍
+ */
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString(includeFieldNames = false)
@@ -18,5 +21,4 @@ public class Book {
 //                new BookTitle(bookTitle.getValue()),
 //                new InternationalStandardBookNumber(isbn.getValue()));
 //    }
-
 }

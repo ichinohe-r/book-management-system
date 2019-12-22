@@ -1,24 +1,27 @@
 package ichinohe.application.bookmanagementsystem.api.entry;
 
-import ichinohe.application.bookmanagementsystem.api.entry.Forms.国際標準図書番号Form;
-import ichinohe.application.bookmanagementsystem.api.entry.Forms.書籍名Form;
-import ichinohe.application.bookmanagementsystem.api.entry.Forms.著者Form;
+import ichinohe.application.bookmanagementsystem.api.entry.Forms.InternationalStandardBookNumberForm;
+import ichinohe.application.bookmanagementsystem.api.entry.Forms.BookTitleForm;
+import ichinohe.application.bookmanagementsystem.api.entry.Forms.AuthorForm;
 import ichinohe.application.bookmanagementsystem.domain.entry.ReceiptDateTime;
 import ichinohe.application.bookmanagementsystem.domain.entry.BookEntryApplication;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+/**
+ * << 集合 Value Object >> 登録したい書籍のリクエスト内容
+ */
 @EqualsAndHashCode
 @AllArgsConstructor
 @ToString(includeFieldNames = false)
-public class 書籍情報登録RequestForms {
+public class BookEntryRequestForms {
 
-    private final 著者Form authorForm;
+    private final AuthorForm authorForm;
 
-    private final 書籍名Form bookTitleForm;
+    private final BookTitleForm bookTitleForm;
 
-    private final 国際標準図書番号Form isbnForm;
+    private final InternationalStandardBookNumberForm isbnForm;
 
     public BookEntryApplication createApplication(ReceiptDateTime receptionDateAndTime) {
         return new BookEntryApplication(

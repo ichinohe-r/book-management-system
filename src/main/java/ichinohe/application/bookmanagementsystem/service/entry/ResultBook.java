@@ -1,4 +1,4 @@
-package ichinohe.application.bookmanagementsystem.datasource.entry;
+package ichinohe.application.bookmanagementsystem.service.entry;
 
 import ichinohe.application.bookmanagementsystem.domain.entry.Author;
 import ichinohe.application.bookmanagementsystem.domain.entry.Book;
@@ -8,6 +8,9 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+/**
+ * DBから復元した書籍
+ */
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString(includeFieldNames = false)

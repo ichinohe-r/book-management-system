@@ -5,6 +5,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * << Value Object >> 書籍名
+ */
 @EqualsAndHashCode
 @AllArgsConstructor
 @ToString(includeFieldNames = false)

@@ -5,6 +5,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * 書籍登録申込書
+ */
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString(includeFieldNames = false)

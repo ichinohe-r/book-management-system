@@ -7,6 +7,9 @@ import lombok.ToString;
 
 import java.time.LocalDateTime;
 
+/**
+ * << Value Object >> 受付日時
+ */
 @RequiredArgsConstructor
 @EqualsAndHashCode
 @ToString(includeFieldNames = false)

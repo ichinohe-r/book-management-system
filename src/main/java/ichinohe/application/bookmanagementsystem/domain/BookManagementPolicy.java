@@ -1,7 +1,7 @@
 package ichinohe.application.bookmanagementsystem.domain;
 
 public class BookManagementPolicy {
-//    public static BookEntryInfoConfirmResult judge() {
+//    public static ExistConfirmResult judge() {
 //
 //        System.out.println("BookEntryApplication：" + bookEntryApplication);
 //
@@ -9,6 +9,6 @@ public class BookManagementPolicy {
 //        /*
 //        チェックロジックはまだ未実装
 //         */
-//        return BookEntryInfoConfirmResult.NOT_EXISTS;
+//        return ExistConfirmResult.NOT_EXIST;
 //    }
 }

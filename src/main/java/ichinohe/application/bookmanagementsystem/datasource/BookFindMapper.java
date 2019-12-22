@@ -1,24 +1,33 @@
 package ichinohe.application.bookmanagementsystem.datasource;
 
-import ichinohe.application.bookmanagementsystem.datasource.entry.ResultBook;
 import ichinohe.application.bookmanagementsystem.domain.entry.Author;
 import ichinohe.application.bookmanagementsystem.domain.entry.BookTitle;
 import ichinohe.application.bookmanagementsystem.domain.entry.InternationalStandardBookNumber;
+import ichinohe.application.bookmanagementsystem.service.entry.ResultBook;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.ResultType;
 import org.apache.ibatis.annotations.Select;
 
+/**
+ * 書籍情報を抽出
+ */
 @Mapper
 public interface BookFindMapper {
     @Select("SELECT author, book_title, isbn " +
             "FROM book_info " +
             "WHERE " +
-            "isbn = #{isbn}"
-
+            "author = #{author} " +
+            "AND " +
+            "book_title = #{bookTitle} " +
+            "AND " +
+            "isbn = #{isbn} " +
+            "AND " +
+            "ROWNUM <= 1" +
+            "ORDER BY system_book_management_number"
     )
-    @ResultType(ResultBook.class)
-    ResultBook findBook(
+    ResultBook findOneBook(
+            @Param("author") String author,
+            @Param("bookTitle") String bookTitle,
             @Param("isbn") String isbn
     );
 

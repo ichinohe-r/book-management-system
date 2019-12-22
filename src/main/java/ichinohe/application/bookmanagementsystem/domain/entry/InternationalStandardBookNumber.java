@@ -5,6 +5,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * << Value Object >> 国際標準図書番号
+ */
 @EqualsAndHashCode
 @AllArgsConstructor
 @ToString(includeFieldNames = false)

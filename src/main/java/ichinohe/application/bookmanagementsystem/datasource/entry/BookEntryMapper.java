@@ -4,8 +4,11 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+/**
+ * 書籍を永続化
+ */
 @Mapper
-public interface 書籍情報登録Mapper {
+public interface BookEntryMapper {
     @Insert(
             "INSERT INTO book_info (" +
                     "author, " +
