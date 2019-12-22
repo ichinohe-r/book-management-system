@@ -19,14 +19,16 @@ public class BookEntryApi {
     @Autowired
     private BookEntryService service;
 
-    public static final String URI = "/book-entry";
-    public static final String NAME = "書籍情報登録API";
-
-    @RequestMapping(value = URI, method = RequestMethod.POST)
+    @RequestMapping(value = "/book-entry", method = RequestMethod.POST)
     public String apply(BookEntryRequest request, Model model) {
         BookEntryApplication application = request.createApplication(ReceiptDateTime.create());
         Result result = service.entry(application);
         model.addAttribute("message", result.getResult());
-        return "index";
+        return "entry";
+    }
+
+    @RequestMapping(value = "/book-entry-view", method = RequestMethod.GET)
+    public String entryView() {
+        return "entry";
     }
 }
