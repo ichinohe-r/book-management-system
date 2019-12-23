@@ -9,4 +9,11 @@ public class BookManagementPolicy {
         }
         return Result.ENTRY_OK;
     }
+
+    public static Result deleteJude(ExistConfirmResult result){
+        if (result.isExist()){
+            return Result.DELETE_OK;
+        }
+        return Result.DELETE_NG;
+    }
 }

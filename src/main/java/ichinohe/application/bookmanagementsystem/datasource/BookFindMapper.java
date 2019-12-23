@@ -62,4 +62,13 @@ public interface BookFindMapper {
     List<ResultBook>  findByPublisher(
             @Param("publisher") String publisher
     );
+
+    @Select("SELECT author, book_title, publisher " +
+            "FROM book_info " +
+            "WHERE " +
+            "book_management_number = #{bookManagementNumber}"
+    )
+    ResultBook findByBookManagementNumber(
+            @Param("bookManagementNumber") int bookManagementNumber
+    );
 }

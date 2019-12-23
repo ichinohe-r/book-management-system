@@ -1,10 +1,7 @@
 package ichinohe.application.bookmanagementsystem.api.search;
 
-import ichinohe.application.bookmanagementsystem.domain.core.Author;
+import ichinohe.application.bookmanagementsystem.api.delete.BookDeleteSearchRequest;
 import ichinohe.application.bookmanagementsystem.domain.core.BookEntity;
-import ichinohe.application.bookmanagementsystem.domain.core.BookManagementNumber;
-import ichinohe.application.bookmanagementsystem.domain.core.BookTitle;
-import ichinohe.application.bookmanagementsystem.domain.core.Publisher;
 import ichinohe.application.bookmanagementsystem.domain.search.BookSearchApplication;
 import ichinohe.application.bookmanagementsystem.service.search.BookSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,12 +18,12 @@ import java.util.List;
 @Controller
 public class BookSearchApi {
     @Autowired
-    BookSearchService service;
+    private BookSearchService searchService;
 
     @RequestMapping(value = "/book-search", method = RequestMethod.POST)
     public String apply(BookSearchRequest request, Model model) {
         BookSearchApplication application = request.createApplication();
-        List<BookEntity> bookEntityList = service.search(application);
+        List<BookEntity> bookEntityList = searchService.search(application);
         model.addAttribute("bookEntityList", bookEntityList);
         return "search";
     }
@@ -35,5 +31,13 @@ public class BookSearchApi {
     @RequestMapping(value = "/book-search-view", method = RequestMethod.GET)
     public String searchView() {
         return "search";
+    }
+
+    @RequestMapping(value = "/book-delete-search", method = RequestMethod.POST)
+    public String apply(BookDeleteSearchRequest request, Model model) {
+        BookSearchApplication application = request.createApplication();
+        List<BookEntity> bookEntityList = searchService.search(application);
+        model.addAttribute("bookEntityList", bookEntityList);
+        return "delete";
     }
 }
