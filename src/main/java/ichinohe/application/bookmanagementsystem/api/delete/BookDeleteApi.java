@@ -14,8 +14,6 @@ public class BookDeleteApi {
     @Autowired
     private BookDeleteService service;
 
-
-
     @RequestMapping(value = "/book-delete", method = RequestMethod.POST)
     public String apply(BookDeleteRequest request, Model model) {
         BookDeleteApplication application = request.createApplication();

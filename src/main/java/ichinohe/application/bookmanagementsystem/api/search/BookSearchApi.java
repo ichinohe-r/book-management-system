@@ -1,5 +1,6 @@
 package ichinohe.application.bookmanagementsystem.api.search;
 
+import ichinohe.application.bookmanagementsystem.api.alteration.BookAlterationSearchRequest;
 import ichinohe.application.bookmanagementsystem.api.delete.BookDeleteSearchRequest;
 import ichinohe.application.bookmanagementsystem.domain.core.BookEntity;
 import ichinohe.application.bookmanagementsystem.domain.search.BookSearchApplication;
@@ -39,5 +40,13 @@ public class BookSearchApi {
         List<BookEntity> bookEntityList = searchService.search(application);
         model.addAttribute("bookEntityList", bookEntityList);
         return "delete";
+    }
+
+    @RequestMapping(value = "/book-alteration-search", method = RequestMethod.POST)
+    public String apply(BookAlterationSearchRequest request, Model model) {
+        BookSearchApplication application = request.createApplication();
+        List<BookEntity> bookEntityList = searchService.search(application);
+        model.addAttribute("bookEntityList", bookEntityList);
+        return "alteration";
     }
 }
