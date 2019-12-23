@@ -10,43 +10,107 @@ import ichinohe.application.bookmanagementsystem.domain.search.BookSearchApplica
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 書籍検索申込書の内容に合わせて検索させるクラス
+ */
 @Repository
 public class BookEntityListFactory {
     @Autowired
     BookSearchMapper bookSearchMapper;
 
     public List<BookEntity> search(BookSearchApplication application) {
-        String author = application.getAuthor().getValue();
-        String bookTitle = application.getBookTitle().getValue();
-        String publisher = application.getPublisher().getValue();
+        // 著者で検索
+        if (!application.getAuthorStringValue().isEmpty() &&
+                application.getBookTitleStringValue().isEmpty() &&
+                application.getPublisherStringValue().isEmpty()) {
+            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchBookByAuthor(
+                    application.getAuthorStringValue()
+            );
+            return streamResultBookEntityToBookEntity(resultBookEntityList);
+        }
+
+        // 書籍名で検索
+        if (application.getAuthorStringValue().isEmpty() &&
+                !application.getBookTitleStringValue().isEmpty() &&
+                application.getPublisherStringValue().isEmpty()) {
+            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchBookByBookTitle(
+                    application.getBookTitleStringValue()
+            );
+            return streamResultBookEntityToBookEntity(resultBookEntityList);
+        }
 
 
-            // 著者で検索
-            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchBookByAuthor(author);
+        // 発行元で検索
+        if (application.getAuthorStringValue().isEmpty() &&
+                application.getBookTitleStringValue().isEmpty() &&
+                !application.getPublisherStringValue().isEmpty()) {
+            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchBookByPublisher(
+                    application.getPublisherStringValue()
+            );
+            return streamResultBookEntityToBookEntity(resultBookEntityList);
+        }
 
-            return resultBookEntityList.stream()
-                    .map(resultBook -> new BookEntity(
-                            new BookManagementNumber(resultBook.getBook_management_number()),
-                            new Author(resultBook.getAuthor()),
-                            new BookTitle(resultBook.getBook_title()),
-                            new Publisher(resultBook.getPublisher()))
-                    ).collect(Collectors.toList());
+        // 著者と発行元で検索
+        if (!application.getAuthorStringValue().isEmpty() &&
+                application.getBookTitleStringValue().isEmpty() &&
+                !application.getPublisherStringValue().isEmpty()) {
+            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchBookByAuthorAndPublisher(
+                    application.getAuthorStringValue(),
+                    application.getPublisherStringValue()
+            );
+            return streamResultBookEntityToBookEntity(resultBookEntityList);
+        }
 
-//        // 著者と書籍名、発行元で検索
-//        ResultBookEntity resultBookEntity = bookSearchMapper.searchBookByAllKeyword(author, bookTitle, publisher);
-//
-////        BookEntity bookEntity = resultBookEntity.restore(resultBookEntity);
-//        List<BookEntity> bookEntityList = new ArrayList<BookEntity>();
-//        bookEntityList.add(new BookEntity(
-//                new BookManagementNumber(resultBookEntity.getBook_management_number()) ,
-//                new Author(resultBookEntity.getAuthor()),
-//                new BookTitle(resultBookEntity.getBook_title()),
-//                new Publisher(resultBookEntity.getPublisher()))
-//        );
-//        return bookEntityList;
+        // 書籍名と発行元で検索
+        if (application.getAuthorStringValue().isEmpty() &&
+                !application.getBookTitleStringValue().isEmpty() &&
+                !application.getPublisherStringValue().isEmpty()) {
+            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchBookByBookTitleAndPublisher(
+                    application.getBookTitleStringValue(),
+                    application.getPublisherStringValue()
+            );
+            return streamResultBookEntityToBookEntity(resultBookEntityList);
+        }
+
+        // 著者と書籍名で検索
+        if (!application.getAuthorStringValue().isEmpty() &&
+                !application.getBookTitleStringValue().isEmpty() &&
+                application.getPublisherStringValue().isEmpty()) {
+
+            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchBookByAuthorAndBookTitle(
+                    application.getAuthorStringValue(),
+                    application.getBookTitleStringValue()
+            );
+            return streamResultBookEntityToBookEntity(resultBookEntityList);
+        }
+
+        // 著者と書籍名、発行元で検索
+        if (!application.getAuthorStringValue().isEmpty() &&
+                !application.getBookTitleStringValue().isEmpty() &&
+                !application.getPublisherStringValue().isEmpty()) {
+
+            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchBookByAllKeyword(
+                    application.getAuthorStringValue(),
+                    application.getBookTitleStringValue(),
+                    application.getPublisherStringValue());
+            return streamResultBookEntityToBookEntity(resultBookEntityList);
+        }
+
+        // 全検索
+        List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchAll();
+        return streamResultBookEntityToBookEntity(resultBookEntityList);
+    }
+
+    private List<BookEntity> streamResultBookEntityToBookEntity(List<ResultBookEntity> resultBookEntityList) {
+        return resultBookEntityList.stream()
+                .map(resultBook -> new BookEntity(
+                        new BookManagementNumber(resultBook.getBook_management_number()),
+                        new Author(resultBook.getAuthor()),
+                        new BookTitle(resultBook.getBook_title()),
+                        new Publisher(resultBook.getPublisher()))
+                ).collect(Collectors.toList());
     }
 }

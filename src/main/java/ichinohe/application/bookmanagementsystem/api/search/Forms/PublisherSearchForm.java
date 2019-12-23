@@ -14,6 +14,6 @@ public class PublisherSearchForm {
     private final String value;
 
     public Publisher getValueObject() {
-        return new Publisher(value);
+        return new Publisher(this.value);
     }
 }

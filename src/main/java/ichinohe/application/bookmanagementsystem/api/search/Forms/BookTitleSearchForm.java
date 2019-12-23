@@ -14,6 +14,6 @@ public class BookTitleSearchForm {
     private final String value;
 
     public BookTitle getValueObject() {
-        return new BookTitle(value);
+        return new BookTitle(this.value);
     }
 }

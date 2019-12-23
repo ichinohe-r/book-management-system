@@ -14,4 +14,8 @@ import lombok.ToString;
 public class BookTitle {
     @Getter
     private final String value;
+
+    public String getStringValue() {
+        return this.value;
+    }
 }
