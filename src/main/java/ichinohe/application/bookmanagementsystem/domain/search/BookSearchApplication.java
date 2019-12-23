@@ -1,19 +1,17 @@
-package ichinohe.application.bookmanagementsystem.domain.core;
+package ichinohe.application.bookmanagementsystem.domain.search;
 
+import ichinohe.application.bookmanagementsystem.domain.core.Author;
+import ichinohe.application.bookmanagementsystem.domain.core.BookTitle;
+import ichinohe.application.bookmanagementsystem.domain.core.Publisher;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
-/**
- * << Entity >> 書籍
- */
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString(includeFieldNames = false)
-public class BookEntity {
-    @Getter
-    private final BookManagementNumber bookManagementNumber;
+public class BookSearchApplication {
     @Getter
     private final Author author;
     @Getter

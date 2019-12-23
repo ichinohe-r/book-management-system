@@ -15,7 +15,6 @@ import lombok.ToString;
 @EqualsAndHashCode
 @ToString(includeFieldNames = false)
 public class ResultBook {
-    private final Integer book_management_number = null;
     private final String author;
     private final String book_title;
     private final String publisher;
