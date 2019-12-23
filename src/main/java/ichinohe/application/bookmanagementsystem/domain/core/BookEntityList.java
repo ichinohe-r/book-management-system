@@ -2,20 +2,18 @@ package ichinohe.application.bookmanagementsystem.domain.core;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.ToString;
 
-/**
- * << Value Object >> 書籍名
- */
-@EqualsAndHashCode
-@AllArgsConstructor
-@ToString(includeFieldNames = false)
-public class BookTitle {
-    @Getter
-    private final String value;
+import java.util.List;
 
-    public String getStringValue() {
-        return this.value;
+@AllArgsConstructor
+@EqualsAndHashCode
+@ToString(includeFieldNames = false)
+public class BookEntityList {
+    private final List<BookEntity> bookEntityList;
+
+    public boolean isExist() {
+        return this.bookEntityList != null;
     }
+
 }

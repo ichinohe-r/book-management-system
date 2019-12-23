@@ -1,4 +1,4 @@
-package ichinohe.application.bookmanagementsystem.api.entry.Forms;
+package ichinohe.application.bookmanagementsystem.api.search.Forms;
 
 import ichinohe.application.bookmanagementsystem.domain.core.BookTitle;
 import lombok.AllArgsConstructor;
@@ -6,13 +6,10 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
-/**
- * << Value Object >> フォームに入力された書籍名の内容
- */
 @EqualsAndHashCode
 @AllArgsConstructor
 @ToString(includeFieldNames = false)
-public class BookTitleForm {
+public class BookTitleSearchForm {
     @Getter
     private final String value;
 

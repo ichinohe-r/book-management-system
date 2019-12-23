@@ -1,8 +1,9 @@
-package ichinohe.application.bookmanagementsystem.datasource;
+package ichinohe.application.bookmanagementsystem.datasource.entry;
 
+import ichinohe.application.bookmanagementsystem.datasource.BookFindMapper;
 import ichinohe.application.bookmanagementsystem.datasource.core.ResultBook;
 import ichinohe.application.bookmanagementsystem.datasource.entry.BookEntryMapper;
-import ichinohe.application.bookmanagementsystem.domain.core.BookRepository;
+import ichinohe.application.bookmanagementsystem.domain.entry.BookEntryRepository;
 import ichinohe.application.bookmanagementsystem.domain.core.UpdateDateTime;
 import ichinohe.application.bookmanagementsystem.domain.entry.BookEntryApplication;
 import ichinohe.application.bookmanagementsystem.domain.entry.ExistConfirmResult;
@@ -10,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class BookEntryImpl implements BookRepository {
+public class BookEntryImpl implements BookEntryRepository {
     @Autowired
     private BookEntryMapper bookInfoEntryMapper;
     @Autowired
