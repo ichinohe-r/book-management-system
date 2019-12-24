@@ -13,7 +13,7 @@ import spock.lang.Unroll
 class BookAlterationServiceTest extends Specification {
 
     @Subject
-    BookAlterationService service
+    private BookAlterationService service
 
     @Collaborator
     private BookRepository bookRepository = Mock(BookRepository)
