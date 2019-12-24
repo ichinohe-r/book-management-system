@@ -4,10 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
-public enum Event {
-    ENTRY("entry"),
-    DELETE("logicalDelete"),
-    ALTERATION("alteration");
+public enum ManagementStatus {
+    ALIVE("alive"),
+    DISPOSALE("disposal");
 
     @Getter
     private final String value;

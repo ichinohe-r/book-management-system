@@ -22,10 +22,12 @@ public interface BookFindMapper {
             "AND " +
             "publisher = #{publisher} " +
             "AND " +
+            "management_status = 'alive' " +
+            "AND " +
             "ROWNUM <= 1" +
             "ORDER BY book_management_number"
     )
-    ResultBook findBookByAllKeyword(
+    ResultBook findAliveBookByAllKeyword(
             @Param("author") String author,
             @Param("bookTitle") String bookTitle,
             @Param("publisher") String publisher
@@ -40,10 +42,12 @@ public interface BookFindMapper {
             "AND " +
             "publisher = #{publisher} " +
             "AND " +
+            "management_status = 'alive' " +
+            "AND " +
             "ROWNUM <= 1" +
             "ORDER BY book_management_number"
     )
-    ResultBookEntity findBookEntityByAllKeyword(
+    ResultBookEntity findAliveBookEntityByAllKeyword(
             @Param("author") String author,
             @Param("bookTitle") String bookTitle,
             @Param("publisher") String publisher
@@ -52,39 +56,11 @@ public interface BookFindMapper {
     @Select("SELECT author, book_title, publisher " +
             "FROM book_info " +
             "WHERE " +
-            "author = #{author} " +
-            "ORDER BY book_management_number"
+            "book_management_number = #{bookManagementNumber} " +
+            "AND " +
+            "management_status = 'alive'"
     )
-    List<ResultBook> findByAuthor(
-            @Param("author") String author
-    );
-
-    @Select("SELECT author, book_title, publisher " +
-            "FROM book_info " +
-            "WHERE " +
-            "book_title = #{bookTitle} " +
-            "ORDER BY book_management_number"
-    )
-    List<ResultBook> findByBookTitle(
-            @Param("bookTitle") String bookTitle
-    );
-
-    @Select("SELECT author, book_title, publisher " +
-            "FROM book_info " +
-            "WHERE " +
-            "publisher = #{publisher} " +
-            "ORDER BY book_management_number"
-    )
-    List<ResultBook> findByPublisher(
-            @Param("publisher") String publisher
-    );
-
-    @Select("SELECT author, book_title, publisher " +
-            "FROM book_info " +
-            "WHERE " +
-            "book_management_number = #{bookManagementNumber}"
-    )
-    ResultBook findByBookManagementNumber(
+    ResultBook findAliveBookByBookManagementNumber(
             @Param("bookManagementNumber") int bookManagementNumber
     );
 }

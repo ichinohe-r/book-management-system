@@ -8,6 +8,7 @@ import ichinohe.application.bookmanagementsystem.domain.alteration.BookAlteratio
 import ichinohe.application.bookmanagementsystem.domain.core.BookEntity;
 import ichinohe.application.bookmanagementsystem.domain.core.BookRepository;
 import ichinohe.application.bookmanagementsystem.domain.core.Event;
+import ichinohe.application.bookmanagementsystem.domain.core.ManagementStatus;
 import ichinohe.application.bookmanagementsystem.domain.core.ReceiptDateTime;
 import ichinohe.application.bookmanagementsystem.domain.core.UpdateDateTime;
 import ichinohe.application.bookmanagementsystem.domain.delete.BookDeleteApplication;
@@ -41,6 +42,7 @@ public class BookImpl implements BookRepository {
                 application.getAuthorStringValue(),
                 application.getBookTitleStringValue(),
                 application.getPublisherStringValue(),
+                ManagementStatus.ALIVE.getValue(),
                 application.getReceiptDateTimeStringValue(),
                 UpdateDateTime.create().getUpdateTimeStringValue()
         );
@@ -48,7 +50,7 @@ public class BookImpl implements BookRepository {
 
     @Override
     public ExistConfirmResult checkByEntryApplication(BookEntryApplication application) {
-        ResultBook resultBook = bookFindMapper.findBookByAllKeyword(
+        ResultBook resultBook = bookFindMapper.findAliveBookByAllKeyword(
                 application.getAuthorStringValue(),
                 application.getBookTitleStringValue(),
                 application.getPublisherStringValue()
@@ -67,7 +69,7 @@ public class BookImpl implements BookRepository {
 
     @Override
     public ExistConfirmResult checkByDeleteApplication(BookDeleteApplication application) {
-        ResultBook resultBook = bookFindMapper.findByBookManagementNumber(application.getBookManagementNumberIntValue());
+        ResultBook resultBook = bookFindMapper.findAliveBookByBookManagementNumber(application.getBookManagementNumberIntValue());
         if (resultBook == null) {
             return ExistConfirmResult.NOT_EXIST;
         }
@@ -76,12 +78,15 @@ public class BookImpl implements BookRepository {
 
     @Override
     public void delete(BookDeleteApplication application) {
-        bookDeleteMapper.delete(application.getBookManagementNumberIntValue());
+        bookDeleteMapper.logicalDelete(
+                application.getBookManagementNumberIntValue(),
+                ManagementStatus.DISPOSALE.getValue()
+        );
     }
 
     @Override
     public ExistConfirmResult checkByAlterationApplication(BookAlterationApplication application) {
-        ResultBook resultBook = bookFindMapper.findByBookManagementNumber(application.getBookManagementNumberIntValue());
+        ResultBook resultBook = bookFindMapper.findAliveBookByBookManagementNumber(application.getBookManagementNumberIntValue());
         if (resultBook == null) {
             return ExistConfirmResult.NOT_EXIST;
         }
@@ -99,8 +104,8 @@ public class BookImpl implements BookRepository {
     }
 
     @Override
-    public BookEntity find(BookEntryApplication application) {
-        ResultBookEntity resultBookEntity = bookFindMapper.findBookEntityByAllKeyword(
+    public BookEntity findAliveBook(BookEntryApplication application) {
+        ResultBookEntity resultBookEntity = bookFindMapper.findAliveBookEntityByAllKeyword(
                 application.getAuthorStringValue(),
                 application.getBookTitleStringValue(),
                 application.getPublisherStringValue()
@@ -113,6 +118,15 @@ public class BookImpl implements BookRepository {
         eventRecordMapper.insert(
                 bookEntity.getBookManagementNumber().getIntValue(),
                 Event.ENTRY.getValue(),
+                ReceiptDateTime.create().getReceiptTimeStringValue()
+        );
+    }
+
+    @Override
+    public void deleteEventRecord(BookDeleteApplication application) {
+        eventRecordMapper.insert(
+                application.getBookManagementNumberIntValue(),
+                Event.DELETE.getValue(),
                 ReceiptDateTime.create().getReceiptTimeStringValue()
         );
     }

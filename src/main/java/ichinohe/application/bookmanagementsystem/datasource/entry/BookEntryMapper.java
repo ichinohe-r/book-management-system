@@ -16,6 +16,7 @@ public interface BookEntryMapper {
                     "author, " +
                     "book_title, " +
                     "publisher, " +
+                    "management_status, " +
                     "event_date_time, " +
                     "update_time" +
                     ") " +
@@ -23,6 +24,7 @@ public interface BookEntryMapper {
                     "#{author}, " +
                     "#{bookTitle}, " +
                     "#{publisher}, " +
+                    "#{managementStatus}, " +
                     "#{receptionDateTime}, " +
                     "#{updateDatetime})"
     )
@@ -30,6 +32,7 @@ public interface BookEntryMapper {
             @Param("author") String author,
             @Param("bookTitle") String bookTitle,
             @Param("publisher") String publisher,
+            @Param("managementStatus") String managementStatus,
             @Param("receptionDateTime") String receptionDateTime,
             @Param("updateDatetime") String updateDatetime
     );

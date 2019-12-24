@@ -20,7 +20,9 @@ public interface BookSearchMapper {
             "AND " +
             "book_title = #{bookTitle} " +
             "AND " +
-            "publisher = #{publisher}"
+            "publisher = #{publisher} " +
+            "AND " +
+            "management_status = 'alive'"
     )
     @Results(id = "resultBookEntity", value = {
             @Result(id = true, column = "book_management_number", property = "book_management_number"),
@@ -28,7 +30,7 @@ public interface BookSearchMapper {
             @Result(id = true, column = "book_title", property = "book_title"),
             @Result(id = true, column = "publisher", property = "publisher")
     })
-    List<ResultBookEntity> searchBookByAllKeyword(
+    List<ResultBookEntity> searchAliveBookByAllKeyword(
             @Param("author") String author,
             @Param("bookTitle") String bookTitle,
             @Param("publisher") String publisher
@@ -37,9 +39,11 @@ public interface BookSearchMapper {
     @Select("SELECT book_management_number, author, book_title, publisher " +
             "FROM book_info " +
             "WHERE " +
-            "author = #{author}"
+            "author = #{author} " +
+            "AND " +
+            "management_status = 'alive'"
     )
-    List<ResultBookEntity> searchBookByAuthor(
+    List<ResultBookEntity> searchAliveBookByAuthor(
             @Param("author") String author
     );
 
@@ -48,9 +52,11 @@ public interface BookSearchMapper {
             "WHERE " +
             "author = #{author}" +
             "AND " +
-            "book_title = #{bookTitle}"
+            "book_title = #{bookTitle} " +
+            "AND " +
+            "management_status = 'alive'"
     )
-    List<ResultBookEntity> searchBookByAuthorAndBookTitle(
+    List<ResultBookEntity> searchAliveBookByAuthorAndBookTitle(
             @Param("author") String author,
             @Param("bookTitle") String bookTitle
     );
@@ -60,9 +66,11 @@ public interface BookSearchMapper {
             "WHERE " +
             "author = #{author}" +
             "AND " +
-            "publisher = #{publisher}"
+            "publisher = #{publisher} " +
+            "AND " +
+            "management_status = 'alive'"
     )
-    List<ResultBookEntity> searchBookByAuthorAndPublisher(
+    List<ResultBookEntity> searchAliveBookByAuthorAndPublisher(
             @Param("author") String author,
             @Param("publisher") String publisher
     );
@@ -70,9 +78,11 @@ public interface BookSearchMapper {
     @Select("SELECT book_management_number, author, book_title, publisher " +
             "FROM book_info " +
             "WHERE " +
-            "book_title = #{bookTitle}"
+            "book_title = #{bookTitle}" +
+            "AND " +
+            "management_status = 'alive'"
     )
-    List<ResultBookEntity> searchBookByBookTitle(
+    List<ResultBookEntity> searchAliveBookByBookTitle(
             @Param("bookTitle") String bookTitle
     );
 
@@ -81,9 +91,11 @@ public interface BookSearchMapper {
             "WHERE " +
             "book_title = #{bookTitle}" +
             "AND " +
-            "publisher = #{publisher}"
+            "publisher = #{publisher} " +
+            "AND " +
+            "management_status = 'alive'"
     )
-    List<ResultBookEntity> searchBookByBookTitleAndPublisher(
+    List<ResultBookEntity> searchAliveBookByBookTitleAndPublisher(
             @Param("bookTitle") String bookTitle,
             @Param("publisher") String publisher
     );
@@ -92,14 +104,18 @@ public interface BookSearchMapper {
     @Select("SELECT book_management_number, author, book_title, publisher " +
             "FROM book_info " +
             "WHERE " +
-            "publisher = #{publisher}"
+            "publisher = #{publisher}" +
+            "AND " +
+            "management_status = 'alive'"
     )
-    List<ResultBookEntity> searchBookByPublisher(
+    List<ResultBookEntity> searchAliveBookByPublisher(
             @Param("publisher") String publisher
     );
 
     @Select("SELECT book_management_number, author, book_title, publisher " +
-            "FROM book_info"
+            "FROM book_info " +
+            "WHERE " +
+            "management_status = 'alive'"
     )
-    List<ResultBookEntity> searchAll();
+    List<ResultBookEntity> searchAliveBookAll();
 }

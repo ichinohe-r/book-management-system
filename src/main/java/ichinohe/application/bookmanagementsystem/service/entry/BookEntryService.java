@@ -4,6 +4,7 @@ import ichinohe.application.bookmanagementsystem.domain.core.BookManagementPolic
 import ichinohe.application.bookmanagementsystem.domain.core.BookRepository;
 import ichinohe.application.bookmanagementsystem.domain.core.Result;
 import ichinohe.application.bookmanagementsystem.domain.entry.BookEntryApplication;
+import ichinohe.application.bookmanagementsystem.service.core.EventRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

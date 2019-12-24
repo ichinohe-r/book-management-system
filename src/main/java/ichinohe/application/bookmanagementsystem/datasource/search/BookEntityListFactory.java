@@ -26,7 +26,7 @@ public class BookEntityListFactory {
         if (!application.getAuthorStringValue().isEmpty() &&
                 application.getBookTitleStringValue().isEmpty() &&
                 application.getPublisherStringValue().isEmpty()) {
-            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchBookByAuthor(
+            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchAliveBookByAuthor(
                     application.getAuthorStringValue()
             );
             return streamResultBookEntityToBookEntity(resultBookEntityList);
@@ -36,7 +36,7 @@ public class BookEntityListFactory {
         if (application.getAuthorStringValue().isEmpty() &&
                 !application.getBookTitleStringValue().isEmpty() &&
                 application.getPublisherStringValue().isEmpty()) {
-            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchBookByBookTitle(
+            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchAliveBookByBookTitle(
                     application.getBookTitleStringValue()
             );
             return streamResultBookEntityToBookEntity(resultBookEntityList);
@@ -47,7 +47,7 @@ public class BookEntityListFactory {
         if (application.getAuthorStringValue().isEmpty() &&
                 application.getBookTitleStringValue().isEmpty() &&
                 !application.getPublisherStringValue().isEmpty()) {
-            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchBookByPublisher(
+            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchAliveBookByPublisher(
                     application.getPublisherStringValue()
             );
             return streamResultBookEntityToBookEntity(resultBookEntityList);
@@ -57,7 +57,7 @@ public class BookEntityListFactory {
         if (!application.getAuthorStringValue().isEmpty() &&
                 application.getBookTitleStringValue().isEmpty() &&
                 !application.getPublisherStringValue().isEmpty()) {
-            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchBookByAuthorAndPublisher(
+            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchAliveBookByAuthorAndPublisher(
                     application.getAuthorStringValue(),
                     application.getPublisherStringValue()
             );
@@ -68,7 +68,7 @@ public class BookEntityListFactory {
         if (application.getAuthorStringValue().isEmpty() &&
                 !application.getBookTitleStringValue().isEmpty() &&
                 !application.getPublisherStringValue().isEmpty()) {
-            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchBookByBookTitleAndPublisher(
+            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchAliveBookByBookTitleAndPublisher(
                     application.getBookTitleStringValue(),
                     application.getPublisherStringValue()
             );
@@ -80,7 +80,7 @@ public class BookEntityListFactory {
                 !application.getBookTitleStringValue().isEmpty() &&
                 application.getPublisherStringValue().isEmpty()) {
 
-            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchBookByAuthorAndBookTitle(
+            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchAliveBookByAuthorAndBookTitle(
                     application.getAuthorStringValue(),
                     application.getBookTitleStringValue()
             );
@@ -92,7 +92,7 @@ public class BookEntityListFactory {
                 !application.getBookTitleStringValue().isEmpty() &&
                 !application.getPublisherStringValue().isEmpty()) {
 
-            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchBookByAllKeyword(
+            List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchAliveBookByAllKeyword(
                     application.getAuthorStringValue(),
                     application.getBookTitleStringValue(),
                     application.getPublisherStringValue());
@@ -100,7 +100,7 @@ public class BookEntityListFactory {
         }
 
         // 全検索
-        List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchAll();
+        List<ResultBookEntity> resultBookEntityList = bookSearchMapper.searchAliveBookAll();
         return streamResultBookEntityToBookEntity(resultBookEntityList);
     }
 

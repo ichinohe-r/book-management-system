@@ -4,6 +4,7 @@ CREATE TABLE book_info (
     author VARCHAR,
     book_title VARCHAR,
     publisher VARCHAR,
+    management_status VARCHAR,
     event_date_time DATETIME,
     update_time DATETIME
 );

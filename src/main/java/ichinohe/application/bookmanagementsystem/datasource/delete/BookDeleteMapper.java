@@ -1,21 +1,24 @@
 package ichinohe.application.bookmanagementsystem.datasource.delete;
 
-import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 /**
- * 書籍を削除
+ * 書籍を論理削除
  */
 @Mapper
 @Repository
 public interface BookDeleteMapper {
-    @Delete("DELETE FROM book_info " +
+    @Update("UPDATE book_info " +
+            "SET " +
+            "management_status = #{managementStatus} " +
             "WHERE " +
             "book_management_number = #{bookManagementNumber}"
     )
-    void delete(
-            @Param("bookManagementNumber") int bookManagementNumber
+    void logicalDelete(
+            @Param("bookManagementNumber") int bookManagementNumber,
+            @Param("managementStatus") String managementStatus
     );
 }
