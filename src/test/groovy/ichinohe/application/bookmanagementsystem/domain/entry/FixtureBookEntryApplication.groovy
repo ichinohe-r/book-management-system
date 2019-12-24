@@ -1,4 +1,4 @@
-package ichinohe.application.bookmanagementsystem.domain
+package ichinohe.application.bookmanagementsystem.domain.entry
 
 import ichinohe.application.bookmanagementsystem.domain.core.FixtureAuthor
 import ichinohe.application.bookmanagementsystem.domain.core.FixtureBookTitle
@@ -7,7 +7,7 @@ import ichinohe.application.bookmanagementsystem.domain.core.FixtureReceiptDateT
 import ichinohe.application.bookmanagementsystem.domain.entry.BookEntryApplication
 
 class FixtureBookEntryApplication {
-    def get(){
+    def get() {
         return new BookEntryApplication(
                 new FixtureAuthor().get(),
                 new FixtureBookTitle().get(),

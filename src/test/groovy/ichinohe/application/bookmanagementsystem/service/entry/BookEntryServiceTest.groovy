@@ -2,9 +2,9 @@ package ichinohe.application.bookmanagementsystem.service.entry
 
 import com.blogspot.toomuchcoding.spock.subjcollabs.Collaborator
 import com.blogspot.toomuchcoding.spock.subjcollabs.Subject
-import ichinohe.application.bookmanagementsystem.domain.FixtureBookEntryApplication
 import ichinohe.application.bookmanagementsystem.domain.core.BookRepository
 import ichinohe.application.bookmanagementsystem.domain.entry.ExistConfirmResult
+import ichinohe.application.bookmanagementsystem.domain.entry.FixtureBookEntryApplication
 import ichinohe.application.bookmanagementsystem.service.core.EventRecordService
 import spock.lang.Specification
 import spock.lang.Unroll
