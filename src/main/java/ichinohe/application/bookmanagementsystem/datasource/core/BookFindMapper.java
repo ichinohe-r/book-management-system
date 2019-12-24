@@ -1,6 +1,5 @@
-package ichinohe.application.bookmanagementsystem.datasource;
+package ichinohe.application.bookmanagementsystem.datasource.core;
 
-import ichinohe.application.bookmanagementsystem.datasource.core.ResultBook;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -23,43 +22,45 @@ public interface BookFindMapper {
             "AND " +
             "publisher = #{publisher} " +
             "AND " +
+            "management_status = 'alive' " +
+            "AND " +
             "ROWNUM <= 1" +
             "ORDER BY book_management_number"
     )
-    ResultBook findOneBook(
+    ResultBook findAliveBookByAllKeyword(
             @Param("author") String author,
             @Param("bookTitle") String bookTitle,
             @Param("publisher") String publisher
     );
 
-
-    @Select("SELECT author, book_title, publisher " +
+    @Select("SELECT book_management_number, author, book_title, publisher " +
             "FROM book_info " +
             "WHERE " +
             "author = #{author} " +
-            "ORDER BY book_management_number"
-    )
-    List<ResultBook> findByAuthor(
-            @Param("author") String author
-    );
-
-    @Select("SELECT author, book_title, publisher " +
-            "FROM book_info " +
-            "WHERE " +
+            "AND " +
             "book_title = #{bookTitle} " +
+            "AND " +
+            "publisher = #{publisher} " +
+            "AND " +
+            "management_status = 'alive' " +
+            "AND " +
+            "ROWNUM <= 1" +
             "ORDER BY book_management_number"
     )
-    List<ResultBook>  findByBookTitle(
-            @Param("bookTitle") String bookTitle
+    ResultBookEntity findAliveBookEntityByAllKeyword(
+            @Param("author") String author,
+            @Param("bookTitle") String bookTitle,
+            @Param("publisher") String publisher
     );
 
     @Select("SELECT author, book_title, publisher " +
             "FROM book_info " +
             "WHERE " +
-            "publisher = #{publisher} " +
-            "ORDER BY book_management_number"
+            "book_management_number = #{bookManagementNumber} " +
+            "AND " +
+            "management_status = 'alive'"
     )
-    List<ResultBook>  findByPublisher(
-            @Param("publisher") String publisher
+    ResultBook findAliveBookByBookManagementNumber(
+            @Param("bookManagementNumber") int bookManagementNumber
     );
 }

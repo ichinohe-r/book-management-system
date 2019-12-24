@@ -1,8 +1,8 @@
 package ichinohe.application.bookmanagementsystem.service.search;
 
 import ichinohe.application.bookmanagementsystem.domain.core.BookEntity;
+import ichinohe.application.bookmanagementsystem.domain.core.BookRepository;
 import ichinohe.application.bookmanagementsystem.domain.search.BookSearchApplication;
-import ichinohe.application.bookmanagementsystem.domain.search.BookSearchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +14,9 @@ import java.util.List;
 @Service
 public class BookSearchService {
     @Autowired
-    BookSearchRepository bookSearchRepository;
+    private BookRepository bookRepository;
 
     public List<BookEntity> search(BookSearchApplication application) {
-        return bookSearchRepository.search(application);
+        return bookRepository.search(application);
     }
 }

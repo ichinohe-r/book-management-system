@@ -5,26 +5,18 @@
     <title>検索画面</title>
 </head>
 <body>
-<table class="tbtest" border="1">
-<tr th:each="BookEntity : ${bookEntityList}" th:object="${BookEntity}">
-    <td th:text="*{bookManagementNumber.value}"></td>
-    <td th:text="*{author.value}"></td>
-    <td th:text="*{bookTitle.value}"></td>
-    <td th:text="*{publisher.value}"></td>
-</tr>
-</table>
-
+<h1>書籍検索画面</h1>
     <form role="form" action="/book-search" th:action="@{/book-search}" method="post">
         <div>
-            <h2>著者</h2>
+            <h3>著者</h3>
             <input type="text" id="authorSearchForm" name="authorSearchForm"/>
         </div>
         <div>
-            <h2>書籍名</h2>
+            <h3>書籍名</h3>
             <input type="text" id="bookTitleSearchForm" name="bookTitleSearchForm"/>
         </div>
         <div>
-            <h2>発行元</h2>
+            <h3>発行元</h3>
             <input type="text" id="publisherSearchForm" name="publisherSearchForm"/>
         </div>
 
@@ -32,5 +24,22 @@
     </form>
 
     <h2><a href="index.html" th:href="@{/index}">トップページへ戻る</a></h2>
+
+    <table class="search" border="1">
+        <thead>
+        <tr>
+            <th>書籍管理番号</th>
+            <th>著者</th>
+            <th>書籍名</th>
+            <th>発行元</th>
+        </tr>
+        </thead>
+        <tr th:each="BookEntity : ${bookEntityList}" th:object="${BookEntity}">
+            <td th:text="*{bookManagementNumber.value}"></td>
+            <td th:text="*{author.value}"></td>
+            <td th:text="*{bookTitle.value}"></td>
+            <td th:text="*{publisher.value}"></td>
+        </tr>
+    </table>
 </body>
 </html>

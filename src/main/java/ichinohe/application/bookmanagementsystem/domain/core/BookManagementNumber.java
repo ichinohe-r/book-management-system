@@ -13,5 +13,9 @@ import lombok.ToString;
 @ToString(includeFieldNames = false)
 public class BookManagementNumber {
     @Getter
-    private final Integer value;
+    private final int value;
+
+    public int getIntValue() {
+        return this.value;
+    }
 }
