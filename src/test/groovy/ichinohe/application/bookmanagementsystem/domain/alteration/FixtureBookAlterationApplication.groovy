@@ -9,7 +9,7 @@ import ichinohe.application.bookmanagementsystem.domain.core.FixtureUpdateDateTi
 class FixtureBookAlterationApplication {
     def get() {
         return new BookAlterationApplication(
-                new FixtureBookManagementNumber().get(),
+                new FixtureBookManagementNumber().getOne(),
                 new FixtureAuthor().get(),
                 new FixtureBookTitle().get(),
                 new FixturePublisher().get(),

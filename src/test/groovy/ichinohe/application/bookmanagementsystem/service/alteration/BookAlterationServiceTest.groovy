@@ -11,7 +11,6 @@ import spock.lang.Unroll
 
 @Unroll
 class BookAlterationServiceTest extends Specification {
-
     @Subject
     private BookAlterationService service
 
