@@ -30,4 +30,6 @@ public interface BookRepository {
     void entryEventRecord(BookEntity bookEntity);
 
     void deleteEventRecord(BookDeleteApplication application);
+
+    void alterationEventRecord(BookAlterationApplication application);
 }

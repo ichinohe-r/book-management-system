@@ -130,4 +130,13 @@ public class BookImpl implements BookRepository {
                 ReceiptDateTime.create().getReceiptTimeStringValue()
         );
     }
+
+    @Override
+    public void alterationEventRecord(BookAlterationApplication application) {
+        eventRecordMapper.insert(
+                application.getBookManagementNumberIntValue(),
+                Event.ALTERATION.getValue(),
+                ReceiptDateTime.create().getReceiptTimeStringValue()
+        );
+    }
 }

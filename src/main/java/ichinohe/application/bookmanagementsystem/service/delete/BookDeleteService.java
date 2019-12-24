@@ -21,8 +21,8 @@ public class BookDeleteService {
     public Result delete(BookDeleteApplication application){
         Result result = deleteCheck(application);
         if (result == Result.DELETE_OK) {
-            eventRecordService.delete(application);
             bookRepository.delete(application);
+            eventRecordService.delete(application);
         }
         return result;
     }
