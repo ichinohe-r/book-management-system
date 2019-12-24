@@ -1,0 +1,81 @@
+@startuml
+
+package api {
+    class Api as "API"{
+    }
+    note right
+    登録API
+    変更API
+    削除API
+    検索API
+    今回は上記4本を作成
+    end note
+
+    class Form as "入力フォームクラス"{
+    }
+
+    class Request as "リクエストクラス"{
+    }
+}
+
+package domain {
+    class Book as "書籍"{
+    }
+    note bottom
+    domain には著者をはじめとする
+    書籍や書籍名などといった”関心”を配置
+    end note
+
+    class Author as "ex) 著者"{
+    }
+    note bottom
+    "関心" domain を
+    値オブジェクトにする
+
+    end note
+
+    interface Repository{
+    }
+    note bottom
+    domain 層を汚さないために
+    interface を用いる
+    end note
+
+}
+
+package service {
+    class Service as "各サービスクラス"{
+    }
+    note right
+    基本的にAPI（コントローラー）に対になる
+    サービスクラスを作成
+    end note
+}
+
+package datasource {
+    class Impl {
+    }
+    note bottom
+    DB と対話する実体クラス
+
+    domain 層を綺麗に保つためならば、
+    datasource はどんなに汚くなっても良い
+    end note
+
+    interface Mapper{
+    }
+    note bottom
+    ORマッパー
+    今回は MyBatis を使用
+    end note
+}
+
+database Database{
+}
+
+api ---> service
+service ----> domain
+datasource ----|> domain
+datasource --> Database
+
+@enduml
