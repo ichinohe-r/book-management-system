@@ -13,7 +13,7 @@ public class BookDeleteApplication {
     @Getter
     private final BookManagementNumber bookManagementNumber;
 
-    public int getBookManagementNumberIntegerValue(){
+    public int getBookManagementNumberIntValue(){
         return bookManagementNumber.getIntValue();
     }
 }

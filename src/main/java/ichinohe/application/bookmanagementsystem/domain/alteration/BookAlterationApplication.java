@@ -24,4 +24,24 @@ public class BookAlterationApplication {
     private final Publisher publisher;
     @Getter
     private final UpdateDateTime updateDateTime;
+
+    public int getBookManagementNumberIntValue(){
+        return bookManagementNumber.getIntValue();
+    }
+
+    public String getAuthorStringValue(){
+        return author.getStringValue();
+    }
+
+    public String getBookTitleStringValue(){
+        return bookTitle.getStringValue();
+    }
+
+    public String getPublisherStringValue(){
+        return publisher.getStringValue();
+    }
+
+    public String getUpdateDateTimeValue(){
+        return updateDateTime.getValue().toString();
+    }
 }

@@ -24,6 +24,6 @@ public class BookDeleteService {
     }
 
     private Result deleteCheck(BookDeleteApplication application){
-        return BookManagementPolicy.deleteJude(bookRepository.checkByDeleteApplication(application));
+        return BookManagementPolicy.deleteJudge(bookRepository.checkByDeleteApplication(application));
     }
 }

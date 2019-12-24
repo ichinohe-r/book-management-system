@@ -1,5 +1,6 @@
 package ichinohe.application.bookmanagementsystem.domain.core;
 
+import ichinohe.application.bookmanagementsystem.domain.alteration.BookAlterationApplication;
 import ichinohe.application.bookmanagementsystem.domain.delete.BookDeleteApplication;
 import ichinohe.application.bookmanagementsystem.domain.entry.BookEntryApplication;
 import ichinohe.application.bookmanagementsystem.domain.entry.ExistConfirmResult;
@@ -19,6 +20,10 @@ public interface BookRepository {
     ExistConfirmResult checkByDeleteApplication(BookDeleteApplication application);
 
     void delete(BookDeleteApplication application);
+
+    ExistConfirmResult checkByAlterationApplication(BookAlterationApplication application);
+
+    void alteration(BookAlterationApplication bookAlterationApplication);
 
 //    BookEntity find(BookEntryApplication application);
 }

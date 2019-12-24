@@ -1,9 +1,11 @@
 package ichinohe.application.bookmanagementsystem.datasource.core;
 
 import ichinohe.application.bookmanagementsystem.datasource.BookFindMapper;
+import ichinohe.application.bookmanagementsystem.datasource.alteration.BookAlterationMapper;
 import ichinohe.application.bookmanagementsystem.datasource.delete.BookDeleteMapper;
 import ichinohe.application.bookmanagementsystem.datasource.entry.BookEntryMapper;
 import ichinohe.application.bookmanagementsystem.datasource.search.BookEntityListFactory;
+import ichinohe.application.bookmanagementsystem.domain.alteration.BookAlterationApplication;
 import ichinohe.application.bookmanagementsystem.domain.core.BookEntity;
 import ichinohe.application.bookmanagementsystem.domain.core.BookRepository;
 import ichinohe.application.bookmanagementsystem.domain.core.UpdateDateTime;
@@ -26,6 +28,8 @@ public class BookImpl implements BookRepository {
     private BookEntityListFactory factory;
     @Autowired
     private BookDeleteMapper bookDeleteMapper;
+    @Autowired
+    private BookAlterationMapper bookAlterationMapper;
 
 
     @Override
@@ -60,7 +64,7 @@ public class BookImpl implements BookRepository {
 
     @Override
     public ExistConfirmResult checkByDeleteApplication(BookDeleteApplication application) {
-        ResultBook resultBook = bookFindMapper.findByBookManagementNumber(application.getBookManagementNumberIntegerValue());
+        ResultBook resultBook = bookFindMapper.findByBookManagementNumber(application.getBookManagementNumberIntValue());
         if (resultBook == null) {
             return ExistConfirmResult.NOT_EXIST;
         }
@@ -69,6 +73,25 @@ public class BookImpl implements BookRepository {
 
     @Override
     public void delete(BookDeleteApplication application) {
-        bookDeleteMapper.delete(application.getBookManagementNumberIntegerValue());
+        bookDeleteMapper.delete(application.getBookManagementNumberIntValue());
+    }
+
+    @Override
+    public ExistConfirmResult checkByAlterationApplication(BookAlterationApplication application) {
+        ResultBook resultBook = bookFindMapper.findByBookManagementNumber(application.getBookManagementNumberIntValue());
+        if (resultBook == null) {
+            return ExistConfirmResult.NOT_EXIST;
+        }
+        return ExistConfirmResult.EXIST;
+    }
+
+    @Override
+    public void alteration(BookAlterationApplication bookAlterationApplication) {
+        bookAlterationMapper.alteration(
+                bookAlterationApplication.getBookManagementNumberIntValue(),
+                bookAlterationApplication.getAuthorStringValue(),
+                bookAlterationApplication.getBookTitleStringValue(),
+                bookAlterationApplication.getPublisherStringValue(),
+                bookAlterationApplication.getUpdateDateTimeValue());
     }
 }
