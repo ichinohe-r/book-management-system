@@ -16,7 +16,6 @@ public class BookAlterationApi {
 
     @RequestMapping(value = "/book-alteration", method = RequestMethod.POST)
     public String apply(BookAlterationRequest request, Model model) {
-        System.out.println(request);
         BookAlterationApplication application = request.createApplication();
         Result result = service.alteration(application);
         model.addAttribute("message", result.getResult());

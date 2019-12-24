@@ -20,18 +20,10 @@
         <button type="submit">検索</button>
     </form>
 
-    <h2>削除フォーム</h2>
-<h1 th:text="${message}"></h1>
-    <form role="form" action="/book-delete" th:action="@{/book-delete}" method="post">
-        <div>
-            <h3>書籍管理番号</h3><input type="number" id="bookManagementNumberForm" name="bookManagementNumberForm"/>
-        </div>
-        <button type="submit">削除</button>
-    </form>
-
     <h2><a href="index.html" th:href="@{/index}">トップページへ戻る</a></h2>
 
     <h2>削除したい書籍の検索結果</h2>
+<h1 th:text="${message}"></h1>
     <table class="delete" border="1">
         <thead>
         <tr>
@@ -39,13 +31,17 @@
             <th>著者</th>
             <th>書籍名</th>
             <th>発行元</th>
+            <th>削除ボタン</th>
         </tr>
         </thead>
         <tr th:each="BookEntity : ${bookEntityList}" th:object="${BookEntity}">
-            <td th:text="*{bookManagementNumber.value}"></td>
+            <form role="form" action="/book-delete" th:action="@{/book-delete}" method="post">
+            <td><input type="text" readonly id="bookManagementNumberForm" name="bookManagementNumberForm" th:value="*{bookManagementNumber.value}"></td>
             <td th:text="*{author.value}"></td>
             <td th:text="*{bookTitle.value}"></td>
             <td th:text="*{publisher.value}"></td>
+            <td><button type="submit">削除</button></td>
+            </form>
         </tr>
     </table>
 </body>
