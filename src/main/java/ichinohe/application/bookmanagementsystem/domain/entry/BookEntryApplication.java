@@ -1,7 +1,6 @@
 package ichinohe.application.bookmanagementsystem.domain.entry;
 
 import ichinohe.application.bookmanagementsystem.domain.core.Author;
-import ichinohe.application.bookmanagementsystem.domain.core.Book;
 import ichinohe.application.bookmanagementsystem.domain.core.BookTitle;
 import ichinohe.application.bookmanagementsystem.domain.core.Publisher;
 import ichinohe.application.bookmanagementsystem.domain.core.ReceiptDateTime;
@@ -26,10 +25,19 @@ public class BookEntryApplication {
     @Getter
     private final ReceiptDateTime receptionDateAndTime;
 
-    public Book createApplicationBook() {
-        return new Book(
-                new Author(author.getValue()),
-                new BookTitle(bookTitle.getValue()),
-                new Publisher(publisher.getValue()));
+    public String getAuthorStringValue() {
+        return this.author.getStringValue();
+    }
+
+    public String getBookTitleStringValue() {
+        return this.bookTitle.getStringValue();
+    }
+
+    public String getPublisherStringValue() {
+        return this.publisher.getStringValue();
+    }
+
+    public String getReceiptDateTimeStringValue() {
+        return receptionDateAndTime.getValue().toString();
     }
 }

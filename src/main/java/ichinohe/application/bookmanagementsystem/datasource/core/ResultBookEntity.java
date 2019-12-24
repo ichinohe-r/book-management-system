@@ -23,12 +23,12 @@ public class ResultBookEntity {
     @Getter
     private final String publisher;
 
-    public BookEntity restore(ResultBookEntity resultBookEntity) {
+    public BookEntity restore() {
         return new BookEntity(
-                new BookManagementNumber(resultBookEntity.book_management_number),
-                new Author(resultBookEntity.author),
-                new BookTitle(resultBookEntity.book_title),
-                new Publisher(resultBookEntity.publisher)
+                new BookManagementNumber(this.book_management_number),
+                new Author(this.author),
+                new BookTitle(this.book_title),
+                new Publisher(this.publisher)
         );
     }
 }

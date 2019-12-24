@@ -20,4 +20,8 @@ public class ReceiptDateTime {
     public static ReceiptDateTime create() {
         return new ReceiptDateTime(LocalDateTime.now());
     }
+
+    public String getReceiptTimeStringValue() {
+        return this.value.toString();
+    }
 }

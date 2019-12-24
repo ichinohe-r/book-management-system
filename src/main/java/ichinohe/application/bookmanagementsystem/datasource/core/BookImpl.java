@@ -1,6 +1,5 @@
 package ichinohe.application.bookmanagementsystem.datasource.core;
 
-import ichinohe.application.bookmanagementsystem.datasource.BookFindMapper;
 import ichinohe.application.bookmanagementsystem.datasource.alteration.BookAlterationMapper;
 import ichinohe.application.bookmanagementsystem.datasource.delete.BookDeleteMapper;
 import ichinohe.application.bookmanagementsystem.datasource.entry.BookEntryMapper;
@@ -8,6 +7,8 @@ import ichinohe.application.bookmanagementsystem.datasource.search.BookEntityLis
 import ichinohe.application.bookmanagementsystem.domain.alteration.BookAlterationApplication;
 import ichinohe.application.bookmanagementsystem.domain.core.BookEntity;
 import ichinohe.application.bookmanagementsystem.domain.core.BookRepository;
+import ichinohe.application.bookmanagementsystem.domain.core.Event;
+import ichinohe.application.bookmanagementsystem.domain.core.ReceiptDateTime;
 import ichinohe.application.bookmanagementsystem.domain.core.UpdateDateTime;
 import ichinohe.application.bookmanagementsystem.domain.delete.BookDeleteApplication;
 import ichinohe.application.bookmanagementsystem.domain.entry.BookEntryApplication;
@@ -30,25 +31,27 @@ public class BookImpl implements BookRepository {
     private BookDeleteMapper bookDeleteMapper;
     @Autowired
     private BookAlterationMapper bookAlterationMapper;
+    @Autowired
+    private EventRecordMapper eventRecordMapper;
 
 
     @Override
     public void entry(BookEntryApplication application) {
         bookInfoEntryMapper.insert(
-                application.getAuthor().getValue(),
-                application.getBookTitle().getValue(),
-                application.getPublisher().getValue(),
-                application.getReceptionDateAndTime().getValue().toString(),
-                UpdateDateTime.create().getValue().toString()
+                application.getAuthorStringValue(),
+                application.getBookTitleStringValue(),
+                application.getPublisherStringValue(),
+                application.getReceiptDateTimeStringValue(),
+                UpdateDateTime.create().getUpdateTimeStringValue()
         );
     }
 
     @Override
     public ExistConfirmResult checkByEntryApplication(BookEntryApplication application) {
-        ResultBook resultBook = bookFindMapper.findOneBook(
-                application.getAuthor().getValue(),
-                application.getBookTitle().getValue(),
-                application.getPublisher().getValue()
+        ResultBook resultBook = bookFindMapper.findBookByAllKeyword(
+                application.getAuthorStringValue(),
+                application.getBookTitleStringValue(),
+                application.getPublisherStringValue()
         );
 
         if (resultBook == null) {
@@ -93,5 +96,24 @@ public class BookImpl implements BookRepository {
                 bookAlterationApplication.getBookTitleStringValue(),
                 bookAlterationApplication.getPublisherStringValue(),
                 bookAlterationApplication.getUpdateDateTimeValue());
+    }
+
+    @Override
+    public BookEntity find(BookEntryApplication application) {
+        ResultBookEntity resultBookEntity = bookFindMapper.findBookEntityByAllKeyword(
+                application.getAuthorStringValue(),
+                application.getBookTitleStringValue(),
+                application.getPublisherStringValue()
+        );
+        return resultBookEntity.restore();
+    }
+
+    @Override
+    public void entryEventRecord(BookEntity bookEntity) {
+        eventRecordMapper.insert(
+                bookEntity.getBookManagementNumber().getIntValue(),
+                Event.ENTRY.getValue(),
+                ReceiptDateTime.create().getReceiptTimeStringValue()
+        );
     }
 }

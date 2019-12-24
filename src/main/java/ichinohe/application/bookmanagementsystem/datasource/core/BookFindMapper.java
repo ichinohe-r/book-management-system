@@ -1,6 +1,5 @@
-package ichinohe.application.bookmanagementsystem.datasource;
+package ichinohe.application.bookmanagementsystem.datasource.core;
 
-import ichinohe.application.bookmanagementsystem.datasource.core.ResultBook;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -26,12 +25,29 @@ public interface BookFindMapper {
             "ROWNUM <= 1" +
             "ORDER BY book_management_number"
     )
-    ResultBook findOneBook(
+    ResultBook findBookByAllKeyword(
             @Param("author") String author,
             @Param("bookTitle") String bookTitle,
             @Param("publisher") String publisher
     );
 
+    @Select("SELECT book_management_number, author, book_title, publisher " +
+            "FROM book_info " +
+            "WHERE " +
+            "author = #{author} " +
+            "AND " +
+            "book_title = #{bookTitle} " +
+            "AND " +
+            "publisher = #{publisher} " +
+            "AND " +
+            "ROWNUM <= 1" +
+            "ORDER BY book_management_number"
+    )
+    ResultBookEntity findBookEntityByAllKeyword(
+            @Param("author") String author,
+            @Param("bookTitle") String bookTitle,
+            @Param("publisher") String publisher
+    );
 
     @Select("SELECT author, book_title, publisher " +
             "FROM book_info " +
@@ -49,7 +65,7 @@ public interface BookFindMapper {
             "book_title = #{bookTitle} " +
             "ORDER BY book_management_number"
     )
-    List<ResultBook>  findByBookTitle(
+    List<ResultBook> findByBookTitle(
             @Param("bookTitle") String bookTitle
     );
 
@@ -59,7 +75,7 @@ public interface BookFindMapper {
             "publisher = #{publisher} " +
             "ORDER BY book_management_number"
     )
-    List<ResultBook>  findByPublisher(
+    List<ResultBook> findByPublisher(
             @Param("publisher") String publisher
     );
 

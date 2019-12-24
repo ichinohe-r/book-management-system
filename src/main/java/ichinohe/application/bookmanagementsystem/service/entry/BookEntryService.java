@@ -14,14 +14,14 @@ import org.springframework.stereotype.Service;
 public class BookEntryService {
     @Autowired
     private BookRepository bookRepository;
-//    @Autowired
-//    private EventRecordService eventRecordService;
+    @Autowired
+    private EventRecordService eventRecordService;
 
     public Result entry(BookEntryApplication application) {
         Result result = entryCheck(application);
         if (result == Result.ENTRY_OK) {
             bookRepository.entry(application);
-//            eventRecordService.entry(application);
+            eventRecordService.entry(application);
         }
         return result;
     }

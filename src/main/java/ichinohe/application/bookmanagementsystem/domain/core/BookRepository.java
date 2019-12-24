@@ -25,5 +25,7 @@ public interface BookRepository {
 
     void alteration(BookAlterationApplication bookAlterationApplication);
 
-//    BookEntity find(BookEntryApplication application);
+    BookEntity find(BookEntryApplication application);
+
+    void entryEventRecord(BookEntity bookEntity);
 }

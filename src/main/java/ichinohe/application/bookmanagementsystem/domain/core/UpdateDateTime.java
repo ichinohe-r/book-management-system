@@ -20,4 +20,8 @@ public class UpdateDateTime {
     public static UpdateDateTime create() {
         return new UpdateDateTime(LocalDateTime.now());
     }
+
+    public String getUpdateTimeStringValue() {
+        return this.value.toString();
+    }
 }
