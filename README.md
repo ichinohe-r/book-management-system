@@ -54,3 +54,10 @@ EVENT_ID | INT | PRIMARY KEY , システムの管理番号 |1 |
 BOOK_MANAGEMENT_NUMBER | INT | システムの書籍管理番号 | 1 |
 EVENT_INFO | VARCHAR | イベントの内容 | entry -> 登録,<br>alteration -> 変更,<br>logicalDelete -> 削除（論理削除）|
 RECORD_DATE_TIME | DATETIME | イベントが記録された時間 | 2019-12-25 09:00:51.906 |
+
+## プロジェクト起動までの流れ
+1. `git clone`でプロジェクトをローカルに持ってくる
+1. `IntelliJ`などでプロジェクトを開く
+1. `build.gradle`で必要なライブラリなどを取得する
+1. `BookManagementSystemApplication`クラスを実行する
+1. ブラウザで http://localhost:9090 にアクセスする
