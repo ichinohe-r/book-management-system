@@ -28,7 +28,7 @@ http://localhost:9090
 ### ポート設定
 自分のマシンに Jenkins を`8080`で立てている都合で`9090`に変更しています。
 
-## 思想
+## 設計思想
 ![image](https://user-images.githubusercontent.com/34944205/71427111-9feb5880-26f7-11ea-9ad5-7efdbbc800c4.png)
 
 ## DB 仕様書
