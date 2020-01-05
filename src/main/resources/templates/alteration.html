@@ -5,44 +5,50 @@
     <title>変更画面</title>
 </head>
 <body>
-    <h1>書籍変更画面</h1>
-        <h2>変更したい書籍の検索はこちら</h2>
-        <form role="form" action="/book-alteration-search" th:action="@{/book-alteration-search}" method="post">
-            <div>
-                <h3>著者</h3><input type="text" id="authorAlterationSearchForm" name="authorAlterationSearchForm"/>
-            </div>
-            <div>
-                <h3>書籍名</h3><input type="text" id="bookTitleDeleteSearchForm" name="bookTitleAlterationSearchForm"/>
-            </div>
-            <div>
-                <h3>発行元</h3><input type="text" id="publisherAlterationSearchForm" name="publisherAlterationSearchForm"/>
-            </div>
-            <button type="submit">検索</button>
-        </form>
-    <h2><a href="index.html" th:href="@{/index}">トップページへ戻る</a></h2>
+<h1>書籍変更画面</h1>
+<h2>変更したい書籍の検索はこちら</h2>
+<form role="form" action="/book-alteration-search" th:action="@{/book-alteration-search}" method="post">
+    <div>
+        <h3>著者</h3><input type="text" id="authorAlterationSearchForm" name="authorAlterationSearchForm"/>
+    </div>
+    <div>
+        <h3>書籍名</h3><input type="text" id="bookTitleDeleteSearchForm" name="bookTitleAlterationSearchForm"/>
+    </div>
+    <div>
+        <h3>発行元</h3><input type="text" id="publisherAlterationSearchForm" name="publisherAlterationSearchForm"/>
+    </div>
+    <button type="submit">検索</button>
+</form>
+<h2><a href="index.html" th:href="@{/index}">トップページへ戻る</a></h2>
 <hr>
 <h1 th:text="${message}"></h1>
-    <h2>変更したい書籍の検索結果</h2>
-    更新したい項目に情報を入力し、更新ボタンを押下してください。
-    <table class="alteration" border="1">
-        <thead>
-            <tr>
-                <th>書籍管理番号</th>
-                <th>著者</th>
-                <th>書籍名</th>
-                <th>発行元</th>
-                <th>変更ボタン</th>
-            </tr>
-        </thead>
-        <tr th:each="BookEntity : ${bookEntityList}" th:object="${BookEntity}">
-            <form role="form" action="/book-alteration" th:action="@{/book-alteration}" method="post">
-                <td><input type="text" readonly id="bookManagementNumberAlterationForm" name="bookManagementNumberAlterationForm" th:value="*{bookManagementNumber.value}"></td>
-                <td><input type="text" id="authorAlterationForm" name="authorAlterationForm" th:value="*{author.value}"/></td>
-                <td><input type="text" id="bookTitleAlterationForm" name="bookTitleAlterationForm" th:value="*{bookTitle.value}"/></td>
-                <td><input type="text" id="publisherAlterationForm" name="publisherAlterationForm" th:value="*{publisher.value}"/></td>
-                <td><button type="submit">変更</button></td>
-            </form>
-        </tr>
-    </table>
+<h2>変更したい書籍の検索結果</h2>
+更新したい項目に情報を入力し、更新ボタンを押下してください。
+<table class="alteration" border="1">
+    <thead>
+    <tr>
+        <th>書籍管理番号</th>
+        <th>著者</th>
+        <th>書籍名</th>
+        <th>発行元</th>
+        <th>変更ボタン</th>
+    </tr>
+    </thead>
+    <tr th:each="BookEntity : ${bookEntityList}" th:object="${BookEntity}">
+        <form role="form" action="/book-alteration" th:action="@{/book-alteration}" method="post">
+            <td><input type="text" readonly id="bookManagementNumberAlterationForm"
+                       name="bookManagementNumberAlterationForm" th:value="*{bookManagementNumber.value}"></td>
+            <td><input type="text" id="authorAlterationForm" name="authorAlterationForm" th:value="*{author.value}"/>
+            </td>
+            <td><input type="text" id="bookTitleAlterationForm" name="bookTitleAlterationForm"
+                       th:value="*{bookTitle.value}"/></td>
+            <td><input type="text" id="publisherAlterationForm" name="publisherAlterationForm"
+                       th:value="*{publisher.value}"/></td>
+            <td>
+                <button type="submit">変更</button>
+            </td>
+        </form>
+    </tr>
+</table>
 </body>
 </html>
