@@ -1,7 +1,7 @@
 package ichinohe.application.bookmanagementsystem.domain.core
 
 class FixtureBookTitle {
-    def get(){
+    def get() {
         new BookTitle("サンプル書籍")
     }
 }
