@@ -18,7 +18,7 @@ public class BookDeleteApi {
     public String apply(BookDeleteRequest request, Model model) {
         BookDeleteApplication application = request.createApplication();
         Result result = service.delete(application);
-        model.addAttribute("message",result.getResult());
+        model.addAttribute("message", result.getResult());
         return "delete";
     }
 

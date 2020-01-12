@@ -19,15 +19,15 @@ public class BookSearchApplication {
     @Getter
     private final Publisher publisher;
 
-    public String getAuthorStringValue(){
+    public String getAuthorStringValue() {
         return author.getStringValue();
     }
 
-    public String getBookTitleStringValue(){
+    public String getBookTitleStringValue() {
         return bookTitle.getStringValue();
     }
 
-    public String getPublisherStringValue(){
+    public String getPublisherStringValue() {
         return publisher.getStringValue();
     }
 }

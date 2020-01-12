@@ -1,7 +1,7 @@
 package ichinohe.application.bookmanagementsystem.domain.core
 
 class FixtureBookEntity {
-    def get(){
+    def get() {
         return new BookEntity(
                 new FixtureBookManagementNumber().getOne(),
                 new FixtureAuthor().get(),
@@ -9,7 +9,8 @@ class FixtureBookEntity {
                 new FixturePublisher().get()
         )
     }
-    def getOther(){
+
+    def getOther() {
         return new BookEntity(
                 new FixtureBookManagementNumber().getTwo(),
                 new FixtureAuthor().getOther(),

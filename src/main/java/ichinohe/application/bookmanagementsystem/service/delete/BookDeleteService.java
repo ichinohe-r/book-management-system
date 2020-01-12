@@ -18,7 +18,7 @@ public class BookDeleteService {
     @Autowired
     private EventRecordService eventRecordService;
 
-    public Result delete(BookDeleteApplication application){
+    public Result delete(BookDeleteApplication application) {
         Result result = deleteCheck(application);
         if (result == Result.DELETE_OK) {
             bookRepository.delete(application);
@@ -27,7 +27,7 @@ public class BookDeleteService {
         return result;
     }
 
-    private Result deleteCheck(BookDeleteApplication application){
+    private Result deleteCheck(BookDeleteApplication application) {
         return BookManagementPolicy.deleteJudge(bookRepository.checkByDeleteApplication(application));
     }
 }

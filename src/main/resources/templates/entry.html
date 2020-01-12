@@ -7,23 +7,23 @@
 <body>
 <h1>書籍登録画面</h1>
 <h1 th:text="${message}"></h1>
-    <form role="form" action="/book-entry" th:action="@{/book-entry}" method="post">
-        <div>
-            <h3>著者</h3>
-            <input type="text" id="authorForm" name="authorForm"/>
-        </div>
-        <div>
-            <h3>書籍名</h3>
-            <input type="text" id="bookTitleForm" name="bookTitleForm"/>
-        </div>
-        <div>
-            <h3>発行元</h3>
-            <input type="text" id="publisherForm" name="publisherForm"/>
-        </div>
+<form role="form" action="/book-entry" th:action="@{/book-entry}" method="post">
+    <div>
+        <h3>著者</h3>
+        <input type="text" id="authorForm" name="authorForm"/>
+    </div>
+    <div>
+        <h3>書籍名</h3>
+        <input type="text" id="bookTitleForm" name="bookTitleForm"/>
+    </div>
+    <div>
+        <h3>発行元</h3>
+        <input type="text" id="publisherForm" name="publisherForm"/>
+    </div>
 
-        <button type="submit">登録</button>
-    </form>
+    <button type="submit">登録</button>
+</form>
 
-    <h2><a href="index.html" th:href="@{/index}">トップページへ戻る</a></h2>
+<h2><a href="index.html" th:href="@{/index}">トップページへ戻る</a></h2>
 </body>
 </html>
