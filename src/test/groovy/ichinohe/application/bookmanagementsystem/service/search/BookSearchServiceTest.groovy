@@ -17,7 +17,7 @@ class BookSearchServiceTest extends Specification {
     @Collaborator
     private BookRepository bookRepository = Mock(BookRepository)
 
-    def "Search"() {
+    def "検索"() {
         setup:
         List<BookEntity> bookEntityList = [new FixtureBookEntity().get(), new FixtureBookEntity().getOther()]
         when:

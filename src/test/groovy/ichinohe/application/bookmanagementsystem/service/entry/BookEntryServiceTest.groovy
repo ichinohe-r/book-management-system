@@ -21,7 +21,7 @@ class BookEntryServiceTest extends Specification {
     private EventRecordService eventRecordService = Mock()
 
 
-    def "Entry#OK"() {
+    def "登録#OK"() {
         when:
         service.entry(new FixtureBookEntryApplication().get())
 
@@ -31,7 +31,7 @@ class BookEntryServiceTest extends Specification {
         1 * eventRecordService.entry(new FixtureBookEntryApplication().get())
     }
 
-    def "Entry#NG"() {
+    def "登録#NG"() {
         when:
         service.entry(new FixtureBookEntryApplication().get())
 

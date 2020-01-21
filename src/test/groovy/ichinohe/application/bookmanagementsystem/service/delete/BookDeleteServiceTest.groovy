@@ -20,7 +20,7 @@ class BookDeleteServiceTest extends Specification {
     @Collaborator
     private EventRecordService eventRecordService = Mock()
 
-    def "Delete#OK"() {
+    def "削除#OK"() {
         when:
         service.delete(new FixtureBookDeleteApplication().get())
 
@@ -30,7 +30,7 @@ class BookDeleteServiceTest extends Specification {
         1 * eventRecordService.delete(new FixtureBookDeleteApplication().get())
     }
 
-    def "Delete#NG"() {
+    def "削除#NG"() {
         when:
         service.delete(new FixtureBookDeleteApplication().get())
 

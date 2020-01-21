@@ -20,7 +20,7 @@ class BookAlterationServiceTest extends Specification {
     @Collaborator
     private EventRecordService eventRecordService = Mock()
 
-    def "Alteration#OK"() {
+    def "変更#OK"() {
         when:
         service.alteration(new FixtureBookAlterationApplication().get())
 
@@ -30,7 +30,7 @@ class BookAlterationServiceTest extends Specification {
         1 * eventRecordService.alteration(new FixtureBookAlterationApplication().get())
     }
 
-    def "Alteration#NG"() {
+    def "変更#NG"() {
         when:
         service.alteration(new FixtureBookAlterationApplication().get())
 
