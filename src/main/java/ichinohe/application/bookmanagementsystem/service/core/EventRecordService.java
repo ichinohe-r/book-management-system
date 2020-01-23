@@ -8,6 +8,9 @@ import ichinohe.application.bookmanagementsystem.domain.entry.BookEntryApplicati
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * イベント記録
+ */
 @Service
 public class EventRecordService {
     @Autowired

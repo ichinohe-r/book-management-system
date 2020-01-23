@@ -2,6 +2,9 @@ package ichinohe.application.bookmanagementsystem.domain.core;
 
 import ichinohe.application.bookmanagementsystem.domain.entry.ExistConfirmResult;
 
+/**
+ * 書籍管理ポリシー
+ */
 public class BookManagementPolicy {
     public static Result entryJudge(ExistConfirmResult result) {
         if (result.isExist()) {

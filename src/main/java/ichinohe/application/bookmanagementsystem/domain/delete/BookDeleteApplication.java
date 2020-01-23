@@ -6,6 +6,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * 書籍削除申込書
+ */
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString(includeFieldNames = false)

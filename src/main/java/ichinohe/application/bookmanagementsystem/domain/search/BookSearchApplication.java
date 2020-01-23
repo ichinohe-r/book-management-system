@@ -8,6 +8,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * 書籍検索申込書
+ */
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString(includeFieldNames = false)

@@ -9,6 +9,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * 書籍レポジトリ
+ */
 @Repository
 public interface BookRepository {
     void entry(BookEntryApplication application);

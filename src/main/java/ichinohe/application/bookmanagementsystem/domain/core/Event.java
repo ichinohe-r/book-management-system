@@ -3,6 +3,9 @@ package ichinohe.application.bookmanagementsystem.domain.core;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/**
+ * システムのイベント
+ */
 @AllArgsConstructor
 public enum Event {
     ENTRY("entry"),
