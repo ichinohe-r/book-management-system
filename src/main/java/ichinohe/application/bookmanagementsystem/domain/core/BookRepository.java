@@ -29,10 +29,4 @@ public interface BookRepository {
     void alteration(BookAlterationApplication bookAlterationApplication);
 
     BookEntity findAliveBook(BookEntryApplication application);
-
-    void entryEventRecord(BookEntity bookEntity);
-
-    void deleteEventRecord(BookDeleteApplication application);
-
-    void alterationEventRecord(BookAlterationApplication application);
 }

@@ -32,9 +32,6 @@ public class BookImpl implements BookRepository {
     private BookDeleteMapper bookDeleteMapper;
     @Autowired
     private BookAlterationMapper bookAlterationMapper;
-    @Autowired
-    private EventRecordMapper eventRecordMapper;
-
 
     @Override
     public void entry(BookEntryApplication application) {
@@ -111,32 +108,5 @@ public class BookImpl implements BookRepository {
                 application.getPublisherStringValue()
         );
         return resultBookEntity.restore();
-    }
-
-    @Override
-    public void entryEventRecord(BookEntity bookEntity) {
-        eventRecordMapper.insert(
-                bookEntity.getBookManagementNumber().getIntValue(),
-                Event.ENTRY.getValue(),
-                ReceiptDateTime.create().getReceiptTimeStringValue()
-        );
-    }
-
-    @Override
-    public void deleteEventRecord(BookDeleteApplication application) {
-        eventRecordMapper.insert(
-                application.getBookManagementNumberIntValue(),
-                Event.DELETE.getValue(),
-                ReceiptDateTime.create().getReceiptTimeStringValue()
-        );
-    }
-
-    @Override
-    public void alterationEventRecord(BookAlterationApplication application) {
-        eventRecordMapper.insert(
-                application.getBookManagementNumberIntValue(),
-                Event.ALTERATION.getValue(),
-                ReceiptDateTime.create().getReceiptTimeStringValue()
-        );
     }
 }
